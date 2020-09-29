@@ -9,19 +9,19 @@ import Foundation
 
 struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
     // Player systems
-    var playerHand: [Card]
-    var playerBank: [Card]
+    private(set) var playerHand: [Card]
+    private(set) var playerBank: [Card]
     
     // Enemy systems
-    var enemyHand: [Card]
-    var enemyBank: [Card]
+    private(set) var enemyHand: [Card]
+    private var enemyBank: [Card]
     
     // Table
-    var table: [Card]
-    var wonTheRound: Bool = false
-    var endTheGame: EndGame = .neither
+    private(set) var table: [Card]
+    private(set) var wonTheRound: Bool = false
+    private(set) var endTheGame: EndGame = .neither
     
-    var audio = SoundManager()
+    private var audio = SoundManager()
     
     enum EndGame {
         case win
@@ -97,7 +97,7 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
     }
   
 // MARK: - Support Methods
-    private mutating func checkRound() {
+    mutating private func checkRound() {
         switch table[0].indicator {
             case 0:
                 switch table[1].indicator {
