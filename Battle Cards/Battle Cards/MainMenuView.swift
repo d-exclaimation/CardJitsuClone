@@ -3,7 +3,7 @@
 //  Battle Cards
 //
 //  Created by Vincent on 9/25/20.
-//
+// Idk
 
 import SwiftUI
 
