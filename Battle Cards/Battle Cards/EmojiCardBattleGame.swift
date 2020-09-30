@@ -41,7 +41,6 @@ class EmojiCardBattleGame: ObservableObject {
     var enemyHand: [BattleSystem<Color, String>.Card] { battleCards.enemyHand }
     var currentTable: [BattleSystem<Color, String>.Card] { battleCards.table }
     var playerBank: [BattleSystem<Color, String>.Card] { battleCards.playerBank }
-    var enemyBank: [BattleSystem<Color, String>.Card] { battleCards.enemyBank }
     var wonRound: Bool { battleCards.wonTheRound }
     var endGame: BattleSystem<Color, String>.EndGame { battleCards.endTheGame }
     

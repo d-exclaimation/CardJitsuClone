@@ -233,11 +233,11 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
 // MARK: - Cards
     
     struct Card: Identifiable {
-        var id = UUID()
-        var element: Element
-        var indicator: Int
-        var power: Int
-        var color: Color
+        let id = UUID()
+        let element: Element
+        let indicator: Int
+        let power: Int
+        let color: Color
         var isFaceUp = false
     }
     
