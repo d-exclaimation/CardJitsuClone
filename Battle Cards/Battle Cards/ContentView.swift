@@ -53,12 +53,12 @@ struct ContentView: View {
                 HStack{
                     ForEach(emojiCardGame.playerHand) { card in
                         if isDrag {
-                            setDropCard(card: card)
+                            setDropCard(card: card).transition(.scale)
                         } else {
-                            setTapCard(card: card)
+                            setTapCard(card: card).transition(.offset(x: movement, y: -cardSwing))
                         }
                     }
-                    .transition(.offset(x: movement, y: -cardSwing))
+                    
                 }
                 
                 // Bank Buttons UX
@@ -132,7 +132,9 @@ struct ContentView: View {
     // Reusable Bank UI
     private func bankDisplay(item: [BattleSystem<Color, String>.Card], color: Color) -> some View {
         ZStack {
-            RoundedRectangle(cornerRadius: cornerRad).foregroundColor(color).opacity(0.8)
+            RoundedRectangle(cornerRadius: cornerRad)
+                .foregroundColor(color)
+                .opacity(0.8)
             
             Grid(item) { card in
                 CardView(element: card.element, power: card.power, color: card.color, isFaceUp: card.isFaceUp)
@@ -157,8 +159,12 @@ struct ContentView: View {
     // Reuseable Table Indicator
     private func tableAlert(systemName: String, color: Color) -> some View {
         ZStack {
-            Image(systemName: "circle.fill").imageScale(.medium).foregroundColor(.white)
-            Image(systemName: systemName).imageScale(.medium).foregroundColor(color)
+            Image(systemName: "circle.fill")
+                .imageScale(.medium)
+                .foregroundColor(.white)
+            Image(systemName: systemName)
+                .imageScale(.medium)
+                .foregroundColor(color)
         }
     }
     
@@ -172,7 +178,11 @@ struct ContentView: View {
                 tableLogo()
                 Spacer()
                 tableSet(index: 1)
-            }.padding().background(tableOpacity).cornerRadius(cornerRad).padding(.horizontal, tablePads)
+            }
+            .padding()
+            .background(tableOpacity)
+            .cornerRadius(cornerRad)
+            .padding(.horizontal, tablePads)
             Spacer()
         }
     }
@@ -194,7 +204,8 @@ struct ContentView: View {
             showBank.toggle()
             // Resets Game
             withAnimation(.easeInOut(duration: 0.2)) {
-                emojiCardGame.resetGame()            }
+                emojiCardGame.resetGame()
+            }
         })
     }
     
@@ -213,11 +224,11 @@ struct ContentView: View {
         // With animation, notify the model that player has chosen a card
         withAnimation(.easeInOut) {
             emojiCardGame.choose(card: card)
+            // Check whether game ended after model notified, and show bank and alert
+            let gameEnded = emojiCardGame.endGame == .win || emojiCardGame.endGame == .lose
+            showBank = gameEnded
+            showAlert = gameEnded
         }
-        // Check whether game ended after model notified, and show bank and alert 
-        let gameEnded = emojiCardGame.endGame == .win || emojiCardGame.endGame == .lose
-        showBank = gameEnded
-        showAlert = gameEnded
     }
     
     
@@ -237,18 +248,37 @@ struct ContentView: View {
         }
     }
     
+    // Method for finding dropped card
     private func drop(providers: [NSItemProvider]) -> Bool {
+        // Since dropped item must be an NSItemProvider Array, it is best to extract loaded objects as a string
         let found = providers.loadObjects(ofType: String.self) { string in
+            // If the string was a uuidString, it is possible to change back to UUID
             if let id = UUID(uuidString: string) {
-                if let card = findSpecificCard(id: id) {
-                    chooseCard(card: card)
+                // Using the View Model to decide which card it is and notify the model
+                withAnimation {
+                    emojiCardGame.chooseIndex(id: id)
+                    // Check whether game ended after model notified, and show bank and alert
+                    let gameEnded = emojiCardGame.endGame == .win || emojiCardGame.endGame == .lose
+                    showBank = gameEnded
+                    showAlert = gameEnded
                 }
             }
         }
         return found
     }
     
+    // Optional: Use the view to decide which card it is. NOTE: The transition of the cardview require to be changed according
+    private func decideCard(id: UUID) {
+        // Call in the method for finding which card it is
+        if let card = findSpecificCard(id: id) {
+            // recall the same method for choosing regular card
+            chooseCard(card: card)
+        }
+    }
+    
+    // Optional method if you want to preserve the animation
     private func findSpecificCard(id: UUID) -> BattleSystem<Color, String>.Card? {
+        // Find the card, given an id, if not return nil
         for index in emojiCardGame.playerHand.indices {
             if id == emojiCardGame.playerHand[index].id {
                 return emojiCardGame.playerHand[index]
