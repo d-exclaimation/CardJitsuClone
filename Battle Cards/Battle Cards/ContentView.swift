@@ -12,6 +12,7 @@ struct ContentView: View {
     // Primary Variables
     @ObservedObject var emojiCardGame: EmojiCardBattleGame
     var gameColor: Color
+    var isDrag: Bool
     
     // Game State Quick Memory variables
     @State private var showBank: Bool = false
@@ -44,13 +45,17 @@ struct ContentView: View {
                 
                 // Table UI
                 setBattleTable()
+                    .onDrop(of: ["public.text"], isTargeted: nil) { providers, location in
+                        self.drop(providers: providers)
+                }
                 
                 // Player Hand UX
                 HStack{
                     ForEach(emojiCardGame.playerHand) { card in
-                        CardView(element: card.element, power: card.power, color: card.color, isFaceUp: card.isFaceUp)
-                            .onTapGesture {
-                                chooseCard(card: card)
+                        if isDrag {
+                            setDropCard(card: card)
+                        } else {
+                            setTapCard(card: card)
                         }
                     }
                     .transition(.offset(x: movement, y: -cardSwing))
@@ -95,6 +100,21 @@ struct ContentView: View {
         Rectangle().foregroundColor(gameColor).ignoresSafeArea(.all)
         Rectangle().foregroundColor(.white).opacity(0.2).rotationEffect(Angle.degrees(9)).ignoresSafeArea(.all)
         Rectangle().foregroundColor(.white).opacity(0.1).rotationEffect(Angle.degrees(-69)).ignoresSafeArea(.all)
+    }
+    
+    private func setTapCard(card: BattleSystem<Color, String>.Card) -> some View {
+        CardView(element: card.element, power: card.power, color: card.color, isFaceUp: card.isFaceUp)
+            .onTapGesture {
+                chooseCard(card: card)
+            }
+    }
+    
+    private func setDropCard(card: BattleSystem<Color, String>.Card) -> some View {
+        CardView(element: card.element, power: card.power, color: card.color, isFaceUp: card.isFaceUp)
+            .onDrag {
+                let uuid = card.id.uuidString
+                return NSItemProvider(object: uuid as NSString)
+            }
     }
     
     
@@ -217,11 +237,31 @@ struct ContentView: View {
         }
     }
     
+    private func drop(providers: [NSItemProvider]) -> Bool {
+        let found = providers.loadObjects(ofType: String.self) { string in
+            if let id = UUID(uuidString: string) {
+                if let card = findSpecificCard(id: id) {
+                    chooseCard(card: card)
+                }
+            }
+        }
+        return found
+    }
+    
+    private func findSpecificCard(id: UUID) -> BattleSystem<Color, String>.Card? {
+        for index in emojiCardGame.playerHand.indices {
+            if id == emojiCardGame.playerHand[index].id {
+                return emojiCardGame.playerHand[index]
+            }
+        }
+        return nil
+    }
+    
     
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(emojiCardGame: EmojiCardBattleGame(), gameColor: Color.black)
+        ContentView(emojiCardGame: EmojiCardBattleGame(), gameColor: Color.black, isDrag: true)
     }
 }

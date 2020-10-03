@@ -49,6 +49,14 @@ class EmojiCardBattleGame: ObservableObject {
         battleCards.choose(card: card, makeColor: EmojiCardBattleGame.colorPicker(_:), makeElement: EmojiCardBattleGame.elementPicker(_:))
     }
     
+    func chooseIndex(id: UUID) {
+        for index in battleCards.playerHand.indices {
+            if id == battleCards.playerHand[index].id {
+                self.choose(card: battleCards.playerHand[index])
+            }
+        }
+    }
+    
     func hidePlayer() { battleCards.hidePlayerCard() }
     
     func flipTable() { battleCards.flipTable() }

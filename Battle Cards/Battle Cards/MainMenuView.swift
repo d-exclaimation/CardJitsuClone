@@ -14,12 +14,15 @@ struct MainMenuView: View {
     @State private var colorChoice: [Color] = [Color.orange, Color.yellow, Color.blue, Color.purple]
     @State private var elementChoice: [String] = ["🔥", "☘️", "💧"]
     @State private var gameBackground: Color = Color(red: 85/255, green: 37/255, blue: 0/255)
+    @State private var isDrag: Bool = false
+    @State private var settingType: String = "neither"
     
     // MARK: - Drawing Constants
     private let commonPads: CGFloat = 40
     private let uiOffSet: [CGFloat] = [0, -80]
     private let buttonScale: CGSize = CGSize(width: 1.4, height: 1.4)
     private let settingsScale: CGSize = CGSize(width: 1.2, height: 1.2)
+    private let smolScale: CGSize = CGSize(width: 0.8, height: 0.8)
     
     
     var body: some View {
@@ -96,14 +99,50 @@ struct MainMenuView: View {
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(.black)
                     .opacity(0.9)
-                colorMenu()
+                chooseWhichToAdjust()
             }
             .frame(width: geometry.size.width*0.9, height: geometry.size.height*0.9, alignment: .center)
             .offset(x: geometry.size.width*0.05, y: showSettings ? geometry.size.height*0.05 : 10000)
         }
     }
     
-    // Settings UX Method
+    // Setting Selection
+    @ViewBuilder private func chooseWhichToAdjust() -> some View {
+        
+        // Pre-settings menu
+        VStack {
+            Text("Choose settings") // Settings Title
+                .font(.title)
+                .foregroundColor(.white)
+            Button{
+                withAnimation {
+                    settingType = "gestures"
+                }
+            } label: {
+                Image("gesture")
+                    .scaleEffect(smolScale)
+            }
+            .padding(commonPads)
+            
+            Button{
+                withAnimation {
+                    settingType = "theme"
+                }
+            } label: {
+                Image("themes")
+                    .scaleEffect(smolScale)
+            }
+            .padding(commonPads)
+        }
+        .opacity( settingType == "neither" ? 1 : 0)
+        
+        gesturesMenu().opacity( settingType == "gestures" ? 1 : 0)
+        
+        colorMenu().opacity( settingType == "theme" ? 1 : 0)
+        
+    }
+    
+    // Theme Settings UX Method
     private func colorMenu() -> some View {
         // Settings Main UX
         VStack {
@@ -128,6 +167,7 @@ struct MainMenuView: View {
             Button {
                 withAnimation {
                     showSettings.toggle()
+                    settingType = "neither"
                 }
             } label: {
                 Text("Confirm")
@@ -137,6 +177,50 @@ struct MainMenuView: View {
             .padding(commonPads)
         }
     }
+    
+    // Gestures Selection UX
+    private func gesturesMenu() -> some View {
+        VStack {
+            Spacer()
+            Text("Choose gestures") // Title
+                .font(.title)
+                .foregroundColor(.white)
+            Spacer()
+            
+            // Options
+            VStack {
+                Image("tap")
+                    .scaleEffect(smolScale)
+                    .onTapGesture {
+                        self.isDrag = false // Change game mode to use tap
+                    }
+                    .padding(commonPads/1.5)
+                Image("drop")
+                    .scaleEffect(smolScale)
+                    .onTapGesture {
+                        self.isDrag = true // Change game mode to use drag
+                    }
+                    .padding(commonPads/1.5)
+            }
+            
+            Spacer()
+            
+            // Confirmation Button
+            Button {
+                withAnimation {
+                    showSettings.toggle()
+                    settingType = "neither"
+                }
+            } label: {
+                Text("Confirm")
+                    .buttonify(color: Color.green, size: .medium)
+            
+            }
+            .padding(commonPads)
+            
+        }
+    }
+    
     
     // Selection Button Method
     private func themeButton(element: String, color: Color, name: String) -> some View {
@@ -185,7 +269,7 @@ struct MainMenuView: View {
     
     // Nagivation Destination method
     private func playGame() -> some View {
-        ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground)
+        ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground, isDrag: isDrag)
     }
 }
 

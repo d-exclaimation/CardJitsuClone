@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		530CE5EA251DE7B300388976 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530CE5E9251DE7B300388976 /* MainMenuView.swift */; };
+		5349D84625284E9600D95AB7 /* NSItemProvidersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5349D84525284E9600D95AB7 /* NSItemProvidersExtension.swift */; };
 		536607D1251C8EA30036B4EA /* BattleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536607D0251C8EA30036B4EA /* BattleSystem.swift */; };
 		536F6432251C720700089B68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F6431251C720700089B68 /* AppDelegate.swift */; };
 		536F6434251C720700089B68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F6433251C720700089B68 /* SceneDelegate.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		530CE5E9251DE7B300388976 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		5349D84525284E9600D95AB7 /* NSItemProvidersExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSItemProvidersExtension.swift; sourceTree = "<group>"; };
 		536607D0251C8EA30036B4EA /* BattleSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSystem.swift; sourceTree = "<group>"; };
 		536F642E251C720700089B68 /* Battle Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Battle Cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		536F6431251C720700089B68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				536607D0251C8EA30036B4EA /* BattleSystem.swift */,
 				53D042C3251C975D0008DEA8 /* EmojiCardBattleGame.swift */,
+				5349D84525284E9600D95AB7 /* NSItemProvidersExtension.swift */,
 				53D042BF251C94F90008DEA8 /* Array+Identifiable.swift */,
 			);
 			name = "Models and Systems";
@@ -221,6 +224,7 @@
 			files = (
 				53D042C4251C975D0008DEA8 /* EmojiCardBattleGame.swift in Sources */,
 				536607D1251C8EA30036B4EA /* BattleSystem.swift in Sources */,
+				5349D84625284E9600D95AB7 /* NSItemProvidersExtension.swift in Sources */,
 				53D042DE251CF62A0008DEA8 /* Buttonify.swift in Sources */,
 				536F6432251C720700089B68 /* AppDelegate.swift in Sources */,
 				536F6434251C720700089B68 /* SceneDelegate.swift in Sources */,
