@@ -9,13 +9,20 @@ import SwiftUI
 
 struct MainMenuView: View {
     
+    static private let untitled = "MainMenuView.Untitled"
+    
     // MARK: - State variables for UX Interaction
     @State private var showSettings: Bool = false
     @State private var showInfos: Bool = false
     @State private var colorChoice: [Color] = [Color.orange, Color.yellow, Color.blue, Color.purple]
     @State private var elementChoice: [String] = ["🔥", "☘️", "💧"]
     @State private var gameBackground: Color = Color(red: 85/255, green: 37/255, blue: 0/255)
-    @State private var isDrag: Bool = false
+    @State private var isDrag: Bool = false {
+        didSet {
+            let json = try? JSONEncoder().encode(isDrag)
+            UserDefaults.standard.set(json, forKey: MainMenuView.untitled)
+        }
+    }
     @State private var settingType: String = "neither"
     
     // MARK: - Drawing Constants
@@ -24,8 +31,9 @@ struct MainMenuView: View {
     private let buttonScale: CGSize = CGSize(width: 1.4, height: 1.4)
     private let settingsScale: CGSize = CGSize(width: 1.2, height: 1.2)
     private let smolScale: CGSize = CGSize(width: 0.8, height: 0.8)
+
     
-    
+    // MARK: Body View
     var body: some View {
         NavigationView {
             
@@ -129,6 +137,12 @@ struct MainMenuView: View {
                 .font(.title)
                 .foregroundColor(.white)
             Button{
+                let json: Data? = UserDefaults.standard.data(forKey: MainMenuView.untitled)
+                if json != nil, let gesture = try? JSONDecoder().decode(Bool.self, from: json!) {
+                    self.isDrag = gesture
+                } else {
+                    self.isDrag = true
+                }
                 withAnimation {
                     settingType = "gestures"
                 }
@@ -409,7 +423,7 @@ struct MainMenuView: View {
     
     // Nagivation Destination method
     private func playGame() -> some View {
-        ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground, isDrag: isDrag)
+        return ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground, isDrag: isDrag)
     }
 }
 

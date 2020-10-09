@@ -72,7 +72,7 @@ struct ContentView: View {
                         .font(.body)
                         .buttonify(color: showBank ? Color.black : Color.white, size: .medium, fontColor: showBank ? Color.white : Color.black)
                 }
-                .offset(x: 0, y: 55)
+                .offset(x: 0, y: 30)
                 
                 
             }
