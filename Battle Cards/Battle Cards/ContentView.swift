@@ -150,21 +150,9 @@ struct ContentView: View {
     // Table Logic
     private func tableLogo() -> some View {
         if emojiCardGame.wonRound {
-            return tableAlert(systemName: "checkmark.circle.fill", color: .green)
+            return IndicatorAlert(systemName: "checkmark.circle.fill", color: .green, scale: .medium)
         } else {
-            return tableAlert(systemName: "xmark.circle.fill", color: .red)
-        }
-    }
-    
-    // Reuseable Table Indicator
-    private func tableAlert(systemName: String, color: Color) -> some View {
-        ZStack {
-            Image(systemName: "circle.fill")
-                .imageScale(.medium)
-                .foregroundColor(.white)
-            Image(systemName: systemName)
-                .imageScale(.medium)
-                .foregroundColor(color)
+            return IndicatorAlert(systemName: "xmark.circle.fill", color: .red, scale: .medium)
         }
     }
     

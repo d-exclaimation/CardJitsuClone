@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		530CE5EA251DE7B300388976 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530CE5E9251DE7B300388976 /* MainMenuView.swift */; };
 		5349D84625284E9600D95AB7 /* NSItemProvidersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5349D84525284E9600D95AB7 /* NSItemProvidersExtension.swift */; };
+		5353E68B25308AFB003D5554 /* IndicatorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5353E68A25308AFB003D5554 /* IndicatorAlert.swift */; };
+		5353E69225309AB0003D5554 /* SFIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5353E69125309AB0003D5554 /* SFIcon.swift */; };
 		536607D1251C8EA30036B4EA /* BattleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536607D0251C8EA30036B4EA /* BattleSystem.swift */; };
 		536F6432251C720700089B68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F6431251C720700089B68 /* AppDelegate.swift */; };
 		536F6434251C720700089B68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F6433251C720700089B68 /* SceneDelegate.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		530CE5E9251DE7B300388976 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		5349D84525284E9600D95AB7 /* NSItemProvidersExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSItemProvidersExtension.swift; sourceTree = "<group>"; };
+		5353E68A25308AFB003D5554 /* IndicatorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorAlert.swift; sourceTree = "<group>"; };
+		5353E69125309AB0003D5554 /* SFIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFIcon.swift; sourceTree = "<group>"; };
 		536607D0251C8EA30036B4EA /* BattleSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSystem.swift; sourceTree = "<group>"; };
 		536F642E251C720700089B68 /* Battle Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Battle Cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		536F6431251C720700089B68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +80,9 @@
 				536F6435251C720700089B68 /* ContentView.swift */,
 				536F6446251C758400089B68 /* CardView.swift */,
 				536F644B251C773E00089B68 /* Cardify.swift */,
+				5353E69125309AB0003D5554 /* SFIcon.swift */,
 				53D042DD251CF62A0008DEA8 /* Buttonify.swift */,
+				5353E68A25308AFB003D5554 /* IndicatorAlert.swift */,
 				53D042C6251CC6F90008DEA8 /* Grid.swift */,
 				53D042C9251CC6FF0008DEA8 /* GridLayout.swift */,
 			);
@@ -229,12 +235,14 @@
 				536F6432251C720700089B68 /* AppDelegate.swift in Sources */,
 				536F6434251C720700089B68 /* SceneDelegate.swift in Sources */,
 				536F6447251C758400089B68 /* CardView.swift in Sources */,
+				5353E68B25308AFB003D5554 /* IndicatorAlert.swift in Sources */,
 				536F644C251C773E00089B68 /* Cardify.swift in Sources */,
 				53D042C0251C94F90008DEA8 /* Array+Identifiable.swift in Sources */,
 				53D042CA251CC6FF0008DEA8 /* GridLayout.swift in Sources */,
 				530CE5EA251DE7B300388976 /* MainMenuView.swift in Sources */,
 				536F6436251C720700089B68 /* ContentView.swift in Sources */,
 				53D042CD251CD3D50008DEA8 /* SoundManager.swift in Sources */,
+				5353E69225309AB0003D5554 /* SFIcon.swift in Sources */,
 				53D042C7251CC6F90008DEA8 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
