@@ -10,6 +10,7 @@ import SwiftUI
 struct MainMenuView: View {
     
     static private let untitled = "MainMenuView.Untitled"
+    private var savedGesture: Bool
     
     // MARK: - State variables for UX Interaction
     @State private var showSettings: Bool = false
@@ -17,7 +18,7 @@ struct MainMenuView: View {
     @State private var colorChoice: [Color] = [Color.orange, Color.yellow, Color.blue, Color.purple]
     @State private var elementChoice: [String] = ["🔥", "☘️", "💧"]
     @State private var gameBackground: Color = Color(red: 85/255, green: 37/255, blue: 0/255)
-    @State private var isDrag: Bool = false {
+    @State private var isDrag: Bool? {
         didSet {
             let json = try? JSONEncoder().encode(isDrag)
             UserDefaults.standard.set(json, forKey: MainMenuView.untitled)
@@ -32,6 +33,14 @@ struct MainMenuView: View {
     private let settingsScale: CGSize = CGSize(width: 1.2, height: 1.2)
     private let smolScale: CGSize = CGSize(width: 0.8, height: 0.8)
 
+    init() {
+        let json: Data? = UserDefaults.standard.data(forKey: MainMenuView.untitled)
+        if json != nil, let gesture = try? JSONDecoder().decode(Bool.self, from: json!) {
+            self.savedGesture = gesture
+        } else {
+            self.savedGesture = true
+        }
+    }
     
     // MARK: Body View
     var body: some View {
@@ -137,12 +146,6 @@ struct MainMenuView: View {
                 .font(.title)
                 .foregroundColor(.white)
             Button{
-                let json: Data? = UserDefaults.standard.data(forKey: MainMenuView.untitled)
-                if json != nil, let gesture = try? JSONDecoder().decode(Bool.self, from: json!) {
-                    self.isDrag = gesture
-                } else {
-                    self.isDrag = true
-                }
                 withAnimation {
                     settingType = "gestures"
                 }
@@ -391,6 +394,8 @@ struct MainMenuView: View {
     }
     
     // MARK: - Action Methods
+
+    
     private func setTheme(theme: String) {
         // Decide depending on the given parameters
         switch theme.lowercased() {
@@ -423,7 +428,10 @@ struct MainMenuView: View {
     
     // Nagivation Destination method
     private func playGame() -> some View {
-        return ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground, isDrag: isDrag)
+        if let isDrag = isDrag {
+            return ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground, isDrag: isDrag)
+        }
+        return ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground, isDrag: savedGesture)
     }
 }
 
