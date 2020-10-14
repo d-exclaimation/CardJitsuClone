@@ -21,8 +21,6 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
     private(set) var wonTheRound: Bool = false
     private(set) var endTheGame: EndGame = .neither
     
-    private var audio = SoundManager()
-    
     enum EndGame {
         case win
         case lose
@@ -54,7 +52,6 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
                 
             }
         }
-        audio.playSound(.shuffle)
         
     }
     
@@ -62,7 +59,6 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
         if let cardIndex: Int = playerHand.firstIndexOf(element: card) {
             // Retrieve card from hand
             let chosen = playerHand.remove(at: cardIndex)
-            audio.playSound(.flip)
             
             // Set the table with retrieved cards
             setTable(playerCard: chosen, enemyChoice: Int.random(in: 0..<enemyHand.count))
@@ -164,10 +160,10 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
         
         if checkForColorVariety(for: playerBank) || checkForElementVariety(for: playerBank){
             endTheGame = .win
-            audio.playSound(.match)
+
         } else if checkForColorVariety(for: enemyBank) || checkForElementVariety(for: enemyBank){
             endTheGame = .lose
-            audio.playSound(.nomatch)
+            
         } else {
             endTheGame = .neither
         }

@@ -20,6 +20,7 @@ struct ContentView: View {
     @State private var showAlert: Bool = false
     
     // MARK: - Drawing constant
+    private let audio = SoundManager()
     private let textFontSize: CGFloat = 50
     private let tableOpacity: Color = Color.black.opacity(0.6)
     private let tablePads: CGFloat = 40
@@ -75,6 +76,9 @@ struct ContentView: View {
                 .offset(x: 0, y: 30)
                 
                 
+            }
+            .onAppear {
+                audio.playSound(.shuffle)
             }
             .font(.system(size: textFontSize))
             .padding(gamePadding[0])
@@ -187,12 +191,15 @@ struct ContentView: View {
     
     // Alert Methods
     private func showAlert(title: String, message: String) -> Alert {
-        Alert(title: Text(title), message: Text(message), dismissButton: Alert.Button.destructive(Text("Ok")) {
+        if emojiCardGame.endGame == .win { audio.playSound(.match) }
+        else { audio.playSound(.nomatch)}
+        return Alert(title: Text(title), message: Text(message), dismissButton: Alert.Button.destructive(Text("Ok")) {
             // Show player current bank
             showBank.toggle()
             // Resets Game
             withAnimation(.easeInOut(duration: 0.2)) {
                 emojiCardGame.resetGame()
+                audio.playSound(.shuffle)
             }
         })
     }
@@ -205,6 +212,7 @@ struct ContentView: View {
         guard let chosenCardIndex = emojiCardGame.playerHand.firstIndexOf(element: card) else {
             return
         }
+        audio.playSound(.flip)
         // Calculate card animation given index
         cardMovement(for: chosenCardIndex)
         // Flip Table for cool effects
@@ -245,6 +253,7 @@ struct ContentView: View {
                 // Using the View Model to decide which card it is and notify the model
                 withAnimation {
                     emojiCardGame.chooseIndex(id: id)
+                    audio.playSound(.flip)
                     // Check whether game ended after model notified, and show bank and alert
                     let gameEnded = emojiCardGame.endGame == .win || emojiCardGame.endGame == .lose
                     showBank = gameEnded

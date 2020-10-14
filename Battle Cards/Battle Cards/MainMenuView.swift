@@ -10,7 +10,6 @@ import SwiftUI
 struct MainMenuView: View {
     
     static private let untitled = "MainMenuView.Untitled"
-    private var savedGesture: Bool
     
     // MARK: - State variables for UX Interaction
     @State private var showSettings: Bool = false
@@ -18,7 +17,7 @@ struct MainMenuView: View {
     @State private var colorChoice: [Color] = [Color.orange, Color.yellow, Color.blue, Color.purple]
     @State private var elementChoice: [String] = ["🔥", "☘️", "💧"]
     @State private var gameBackground: Color = Color(red: 85/255, green: 37/255, blue: 0/255)
-    @State private var isDrag: Bool? {
+    @State private var isDrag: Bool {
         didSet {
             let json = try? JSONEncoder().encode(isDrag)
             UserDefaults.standard.set(json, forKey: MainMenuView.untitled)
@@ -27,6 +26,7 @@ struct MainMenuView: View {
     @State private var settingType: String = "neither"
     
     // MARK: - Drawing Constants
+    private let audio = SoundManager()
     private let commonPads: CGFloat = 40
     private let uiOffSet: [CGFloat] = [0, -40]
     private let buttonScale: CGSize = CGSize(width: 1.4, height: 1.4)
@@ -36,9 +36,9 @@ struct MainMenuView: View {
     init() {
         let json: Data? = UserDefaults.standard.data(forKey: MainMenuView.untitled)
         if json != nil, let gesture = try? JSONDecoder().decode(Bool.self, from: json!) {
-            self.savedGesture = gesture
+            _isDrag = State(wrappedValue: Bool(gesture))
         } else {
-            self.savedGesture = true
+            _isDrag = State(wrappedValue: false)
         }
     }
     
@@ -74,6 +74,7 @@ struct MainMenuView: View {
                             // Show settings menu
                             withAnimation {
                                 showSettings.toggle()
+                                audio.playSound(.flip)
                             }
                     }
                     
@@ -82,9 +83,10 @@ struct MainMenuView: View {
                         .padding(commonPads/1.5)
                         .scaleEffect(settingsScale)
                         .onTapGesture {
-                            // Show settings menu
+                            // Show information menu
                             withAnimation {
                                 showInfos.toggle()
+                                audio.playSound(.flip)
                             }
                     }
                     
@@ -148,6 +150,7 @@ struct MainMenuView: View {
             Button{
                 withAnimation {
                     settingType = "gestures"
+                    audio.playSound(.flip)
                 }
             } label: {
                 Image("gesture")
@@ -158,6 +161,7 @@ struct MainMenuView: View {
             Button{
                 withAnimation {
                     settingType = "theme"
+                    audio.playSound(.flip)
                 }
             } label: {
                 Image("themes")
@@ -202,6 +206,7 @@ struct MainMenuView: View {
                 withAnimation {
                     showSettings.toggle()
                     settingType = "neither"
+                    audio.playSound(.flip)
                 }
             } label: {
                 Text("Confirm")
@@ -225,6 +230,7 @@ struct MainMenuView: View {
             HStack {
                 SFIcon(systemName: "cursorarrow.rays", with: Color(red: 0, green: 1, blue: 1), named: "Tap") {
                     isDrag = false
+                    audio.playSound(.match)
                 }
                 .scaleEffect(1.5)
                 .padding(commonPads/1.5)
@@ -232,6 +238,7 @@ struct MainMenuView: View {
                 
                 SFIcon(systemName: "cursorarrow.motionlines", with: Color(red: 1, green: 0, blue: 1), named: "Drop") {
                     isDrag = true
+                    audio.playSound(.match)
                 }
                 .scaleEffect(1.5)
                 .padding(commonPads/1.5)
@@ -244,6 +251,7 @@ struct MainMenuView: View {
                 withAnimation {
                     showSettings.toggle()
                     settingType = "neither"
+                    audio.playSound(.flip)
                 }
             } label: {
                 Text("Confirm")
@@ -389,6 +397,7 @@ struct MainMenuView: View {
         .padding(commonPads)
         .onTapGesture {
             // Call in the set them function given the parameters
+            audio.playSound(.match)
             setTheme(theme: name.lowercased())
         }
     }
@@ -428,10 +437,7 @@ struct MainMenuView: View {
     
     // Nagivation Destination method
     private func playGame() -> some View {
-        if let isDrag = isDrag {
-            return ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground, isDrag: isDrag)
-        }
-        return ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground, isDrag: savedGesture)
+        ContentView(emojiCardGame: EmojiCardBattleGame(colors: colorChoice, elements: elementChoice), gameColor: gameBackground, isDrag: isDrag)
     }
 }
 
