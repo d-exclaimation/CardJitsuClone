@@ -27,8 +27,11 @@ struct CardView: View {
     private func cardBody(for size: CGSize) -> some View {
         VStack{
             Text(element)
-            Text("\(power)").font(.system(size: scaledSize(given: size) - 20)).padding(cardPadding)
-        }.font(.system(size: scaledSize(given: size)))
+            Text("\(power)")
+                .font(.system(size: scaledSize(given: size) - 20))
+                .padding(cardPadding)
+        }
+        .font(.system(size: scaledSize(given: size)))
         .background(Color.white)
         .cornerRadius(cardPadding)
         .cardify(isFaceUp: isFaceUp)

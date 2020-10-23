@@ -31,6 +31,7 @@
 		53D042D8251CD3FE0008DEA8 /* dingcorrect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 53D042D4251CD3FE0008DEA8 /* dingcorrect.wav */; };
 		53D042DB251CF0D90008DEA8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D042DA251CF0D90008DEA8 /* icon.png */; };
 		53D042DE251CF62A0008DEA8 /* Buttonify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D042DD251CF62A0008DEA8 /* Buttonify.swift */; };
+		53E5F0712541AD3900D0FC11 /* LandScapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5F0702541AD3900D0FC11 /* LandScapeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		53D042D4251CD3FE0008DEA8 /* dingcorrect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dingcorrect.wav; sourceTree = "<group>"; };
 		53D042DA251CF0D90008DEA8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		53D042DD251CF62A0008DEA8 /* Buttonify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttonify.swift; sourceTree = "<group>"; };
+		53E5F0702541AD3900D0FC11 /* LandScapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandScapeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				530CE5E9251DE7B300388976 /* MainMenuView.swift */,
 				536F6435251C720700089B68 /* ContentView.swift */,
+				53E5F0702541AD3900D0FC11 /* LandScapeView.swift */,
 				536F6446251C758400089B68 /* CardView.swift */,
 				536F644B251C773E00089B68 /* Cardify.swift */,
 				5353E69125309AB0003D5554 /* SFIcon.swift */,
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53E5F0712541AD3900D0FC11 /* LandScapeView.swift in Sources */,
 				53D042C4251C975D0008DEA8 /* EmojiCardBattleGame.swift in Sources */,
 				536607D1251C8EA30036B4EA /* BattleSystem.swift in Sources */,
 				5349D84625284E9600D95AB7 /* NSItemProvidersExtension.swift in Sources */,
@@ -394,7 +398,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.d.exclaimation.Battle-Cards";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -415,7 +419,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.d.exclaimation.Battle-Cards";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

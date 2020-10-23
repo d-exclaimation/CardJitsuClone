@@ -103,6 +103,7 @@ struct MainMenuView: View {
                 infoMenu()
             }
             .navigationBarHidden(true)
+            LandScapeView(gameBackground: $gameBackground)
         }
     }
     
