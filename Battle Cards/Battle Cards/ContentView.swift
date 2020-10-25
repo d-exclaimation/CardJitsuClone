@@ -289,6 +289,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(emojiCardGame: EmojiCardBattleGame(), gameColor: Color.black, isDrag: true)
+        ContentView(emojiCardGame: EmojiCardBattleGame(with: .art), gameColor: Color.black, isDrag: true)
     }
 }

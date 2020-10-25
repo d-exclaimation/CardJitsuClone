@@ -11,6 +11,12 @@
 		5349D84625284E9600D95AB7 /* NSItemProvidersExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5349D84525284E9600D95AB7 /* NSItemProvidersExtension.swift */; };
 		5353E68B25308AFB003D5554 /* IndicatorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5353E68A25308AFB003D5554 /* IndicatorAlert.swift */; };
 		5353E69225309AB0003D5554 /* SFIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5353E69125309AB0003D5554 /* SFIcon.swift */; };
+		535A30CB254443FD000AAF9A /* ThemeChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535A30CA254443FD000AAF9A /* ThemeChooser.swift */; };
+		535A30CE254448F9000AAF9A /* InfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535A30CD254448F9000AAF9A /* InfoPanel.swift */; };
+		535A30D1254454C8000AAF9A /* BattleTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535A30D0254454C8000AAF9A /* BattleTheme.swift */; };
+		535A30D425445566000AAF9A /* Color+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535A30D325445566000AAF9A /* Color+RGBA.swift */; };
+		535A30D725445F29000AAF9A /* String+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535A30D625445F29000AAF9A /* String+Format.swift */; };
+		535A30DA254467A8000AAF9A /* ElementTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535A30D9254467A8000AAF9A /* ElementTriangle.swift */; };
 		536607D1251C8EA30036B4EA /* BattleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536607D0251C8EA30036B4EA /* BattleSystem.swift */; };
 		536F6432251C720700089B68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F6431251C720700089B68 /* AppDelegate.swift */; };
 		536F6434251C720700089B68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F6433251C720700089B68 /* SceneDelegate.swift */; };
@@ -39,6 +45,12 @@
 		5349D84525284E9600D95AB7 /* NSItemProvidersExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSItemProvidersExtension.swift; sourceTree = "<group>"; };
 		5353E68A25308AFB003D5554 /* IndicatorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorAlert.swift; sourceTree = "<group>"; };
 		5353E69125309AB0003D5554 /* SFIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFIcon.swift; sourceTree = "<group>"; };
+		535A30CA254443FD000AAF9A /* ThemeChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooser.swift; sourceTree = "<group>"; };
+		535A30CD254448F9000AAF9A /* InfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPanel.swift; sourceTree = "<group>"; };
+		535A30D0254454C8000AAF9A /* BattleTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleTheme.swift; sourceTree = "<group>"; };
+		535A30D325445566000AAF9A /* Color+RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+RGBA.swift"; sourceTree = "<group>"; };
+		535A30D625445F29000AAF9A /* String+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Format.swift"; sourceTree = "<group>"; };
+		535A30D9254467A8000AAF9A /* ElementTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementTriangle.swift; sourceTree = "<group>"; };
 		536607D0251C8EA30036B4EA /* BattleSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSystem.swift; sourceTree = "<group>"; };
 		536F642E251C720700089B68 /* Battle Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Battle Cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		536F6431251C720700089B68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +91,9 @@
 			isa = PBXGroup;
 			children = (
 				530CE5E9251DE7B300388976 /* MainMenuView.swift */,
+				535A30CA254443FD000AAF9A /* ThemeChooser.swift */,
+				535A30CD254448F9000AAF9A /* InfoPanel.swift */,
+				535A30D9254467A8000AAF9A /* ElementTriangle.swift */,
 				536F6435251C720700089B68 /* ContentView.swift */,
 				53E5F0702541AD3900D0FC11 /* LandScapeView.swift */,
 				536F6446251C758400089B68 /* CardView.swift */,
@@ -139,8 +154,11 @@
 			children = (
 				536607D0251C8EA30036B4EA /* BattleSystem.swift */,
 				53D042C3251C975D0008DEA8 /* EmojiCardBattleGame.swift */,
+				535A30D0254454C8000AAF9A /* BattleTheme.swift */,
+				535A30D325445566000AAF9A /* Color+RGBA.swift */,
 				5349D84525284E9600D95AB7 /* NSItemProvidersExtension.swift */,
 				53D042BF251C94F90008DEA8 /* Array+Identifiable.swift */,
+				535A30D625445F29000AAF9A /* String+Format.swift */,
 			);
 			name = "Models and Systems";
 			sourceTree = "<group>";
@@ -232,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E5F0712541AD3900D0FC11 /* LandScapeView.swift in Sources */,
+				535A30CB254443FD000AAF9A /* ThemeChooser.swift in Sources */,
 				53D042C4251C975D0008DEA8 /* EmojiCardBattleGame.swift in Sources */,
 				536607D1251C8EA30036B4EA /* BattleSystem.swift in Sources */,
 				5349D84625284E9600D95AB7 /* NSItemProvidersExtension.swift in Sources */,
@@ -239,13 +258,18 @@
 				536F6432251C720700089B68 /* AppDelegate.swift in Sources */,
 				536F6434251C720700089B68 /* SceneDelegate.swift in Sources */,
 				536F6447251C758400089B68 /* CardView.swift in Sources */,
+				535A30CE254448F9000AAF9A /* InfoPanel.swift in Sources */,
 				5353E68B25308AFB003D5554 /* IndicatorAlert.swift in Sources */,
+				535A30D425445566000AAF9A /* Color+RGBA.swift in Sources */,
+				535A30D1254454C8000AAF9A /* BattleTheme.swift in Sources */,
 				536F644C251C773E00089B68 /* Cardify.swift in Sources */,
+				535A30DA254467A8000AAF9A /* ElementTriangle.swift in Sources */,
 				53D042C0251C94F90008DEA8 /* Array+Identifiable.swift in Sources */,
 				53D042CA251CC6FF0008DEA8 /* GridLayout.swift in Sources */,
 				530CE5EA251DE7B300388976 /* MainMenuView.swift in Sources */,
 				536F6436251C720700089B68 /* ContentView.swift in Sources */,
 				53D042CD251CD3D50008DEA8 /* SoundManager.swift in Sources */,
+				535A30D725445F29000AAF9A /* String+Format.swift in Sources */,
 				5353E69225309AB0003D5554 /* SFIcon.swift in Sources */,
 				53D042C7251CC6F90008DEA8 /* Grid.swift in Sources */,
 			);

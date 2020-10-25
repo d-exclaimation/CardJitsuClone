@@ -9,32 +9,21 @@ import Foundation
 import SwiftUI
 
 class EmojiCardBattleGame: ObservableObject {
-    @Published private var battleCards: BattleSystem<Color, String> = createNewGame()
+    @Published private var battleCards: BattleSystem<Color, String>
     
-    static var colorPicker: [Color] = [Color.orange, Color.yellow, Color.blue, Color.purple]
+    var gameTheme: BattleTheme
     
-    static var elementPicker: [String] = ["🔥", "☘️", "💧"]
-    
-    
-    init(colors: [Color] = [Color.orange, Color.yellow, Color.blue, Color.purple], elements: [String] = ["🔥", "☘️", "💧"]) {
-        EmojiCardBattleGame.colorPicker = colors
-        EmojiCardBattleGame.elementPicker = elements
+    init(with theme: BattleTheme) {
+        gameTheme = theme
+        battleCards = EmojiCardBattleGame.createNewGame(colors: theme.colorPicker.map { Color($0) }, elements: theme.elementPicker)
     }
     
     
     // MARK: - Static functions
-    private static func createNewGame() -> BattleSystem<Color, String> {
-        BattleSystem<Color, String>(makeColor: colorPicker(_:), makeElement: elementPicker(_:))
+    private static func createNewGame(colors: [Color], elements: [String]) -> BattleSystem<Color, String> {
+        BattleSystem<Color, String>(makeColor: { colors[$0] }, makeElement: { elements[$0] })
     }
-    
-    private static func colorPicker(_ index: Int) -> Color {
-        return colorPicker[index]
-    }
-    
-    private static func elementPicker(_ index: Int) -> String {
-        return elementPicker[index]
-    }
-    
+
     
     // MARK: - Access
     var playerHand: [BattleSystem<Color, String>.Card] { battleCards.playerHand }
@@ -46,7 +35,7 @@ class EmojiCardBattleGame: ObservableObject {
     
     // MARK: - Intent
     func choose(card: BattleSystem<Color, String>.Card) {
-        battleCards.choose(card: card, makeColor: EmojiCardBattleGame.colorPicker(_:), makeElement: EmojiCardBattleGame.elementPicker(_:))
+        battleCards.choose(card: card, makeColor: { Color(gameTheme.colorPicker[$0]) }, makeElement: { gameTheme.elementPicker[$0] })
     }
     
     func chooseIndex(id: UUID) {
@@ -61,5 +50,5 @@ class EmojiCardBattleGame: ObservableObject {
     
     func flipTable() { battleCards.flipTable() }
     
-    func resetGame() { battleCards = EmojiCardBattleGame.createNewGame() }
+    func resetGame() { battleCards = EmojiCardBattleGame.createNewGame(colors: gameTheme.colorPicker.map { Color($0) }, elements: gameTheme.elementPicker) }
 }

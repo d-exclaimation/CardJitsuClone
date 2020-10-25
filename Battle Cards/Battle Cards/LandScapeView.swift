@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LandScapeView: View {
-    @Binding var gameBackground: Color
+    var gameBackground: Color
     
     var body: some View {
         ZStack {
