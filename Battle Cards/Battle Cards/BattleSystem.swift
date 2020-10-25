@@ -34,7 +34,7 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
         // Initialize all element
         playerBank = [Card]()
         enemyBank = [Card]()
-        table = [Card(element: makeElement(0), indicator: 0, power: 0, color: makeColor(0)), Card(element: makeElement(0), indicator: 0, power: 0, color: makeColor(0))]
+        table = [Card(element: makeElement(0), indicator: .paper, power: 0, color: makeColor(0)), Card(element: makeElement(0), indicator: .paper, power: 0, color: makeColor(0))]
         
         playerHand = [Card]()
         enemyHand = [Card]()
@@ -94,47 +94,9 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
   
 // MARK: - Support Methods
     mutating private func checkRound() {
-        switch table[0].indicator {
-            case 0:
-                switch table[1].indicator {
-                    case 0:
-                        self.drawMode()
-                    case 1:
-                        self.winMode()
-                    case 2:
-                        self.loseMode()
-                    default:
-                        // Fuck
-                        print("Something is fucked")
-                }
-            case 1:
-                switch table[1].indicator {
-                    case 0:
-                        self.loseMode()
-                    case 1:
-                        self.drawMode()
-                    case 2:
-                        self.winMode()
-                    default:
-                        // Fuck
-                        print("Something is fucked")
-                }
-            case 2:
-                switch table[1].indicator {
-                    case 0:
-                        self.winMode()
-                    case 1:
-                        self.loseMode()
-                    case 2:
-                        self.drawMode()
-                    default:
-                        // Fuck
-                        print("Something is fucked")
-                }
-            default:
-                // Fuck
-                print("Something is fucked")
-        }
+        if table[0] == table[1] { drawMode() }
+        else if table[0] > table[1] { winMode() }
+        else if table[0] < table[1] { loseMode() }
     }
     
     mutating private func winMode() {
@@ -149,9 +111,9 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
     
     mutating private func drawMode() {
         if table[1].power > table[0].power {
-            self.loseMode()
+            loseMode()
         } else {
-            self.winMode()
+            winMode()
         }
     }
     
@@ -200,7 +162,8 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
         if arr.count < 3 {
             return false
         } else {
-            for i in 0...2 {
+            let allRPS: [Card.RPS] = [.scissors, .paper, .rock]
+            for i in allRPS {
                 var newArr = [Color]()
                 for index in arr.indices {
                     if arr[index].indicator == i && !newArr.contains(arr[index].color) {
@@ -217,24 +180,60 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
     private func createCard(makeColor: (Int) -> Color, makeElement: (Int) -> Element) -> Card {
         // Set all variables for Card
         let i = Int.random(in: 0...2)
+        let newI: Card.RPS = i == 0 ? .scissors : i == 1 ? .paper : .rock
         let e = makeElement(i)
         let c = makeColor(Int.random(in: 0...3))
-        let p = Int.random(in: 1...10)
-        
+        let p = Int.random(in: 1...15)
         // Create card
-        return Card(element: e, indicator: i, power: p, color: c, isFaceUp: true)
+        return Card(element: e, indicator: newI, power: p > 10 ? 10 - ((p - 10) / 2): p, color: c, isFaceUp: true)
     }
     
  
 // MARK: - Cards
     
-    struct Card: Identifiable {
+    struct Card: Identifiable, CustomStringConvertible, Equatable, Comparable {
         let id = UUID()
         let element: Element
-        let indicator: Int
+        let indicator: Card.RPS
         let power: Int
         let color: Color
         var isFaceUp = false
+        
+        enum RPS {
+            case scissors
+            case paper
+            case rock
+        }
+        
+        var description: String {
+            "Card of \(indicator), with power \(power) with id \(id.uuidString)"
+        }
+        
+        static public func == (lhs: Card, rhs: Card) -> Bool {
+            lhs.indicator == rhs.indicator
+        }
+        
+        static public func > (lhs: Card, rhs: Card) -> Bool {
+            switch lhs.indicator {
+                case .scissors:
+                    return rhs.indicator == .paper ? true : false
+                case .paper:
+                    return rhs.indicator == .rock ? true : false
+                case .rock:
+                    return rhs.indicator == .scissors ? true : false
+            }
+        }
+        
+        static public func < (lhs: Card, rhs: Card) -> Bool {
+            switch lhs.indicator {
+                case .scissors:
+                    return rhs.indicator == .rock ? true : false
+                case .paper:
+                    return rhs.indicator == .scissors ? true : false
+                case .rock:
+                    return rhs.indicator == .paper ? true : false
+            }
+        }
     }
     
 }

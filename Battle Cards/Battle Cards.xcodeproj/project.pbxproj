@@ -26,6 +26,7 @@
 		536F643E251C720800089B68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 536F643C251C720800089B68 /* LaunchScreen.storyboard */; };
 		536F6447251C758400089B68 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F6446251C758400089B68 /* CardView.swift */; };
 		536F644C251C773E00089B68 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536F644B251C773E00089B68 /* Cardify.swift */; };
+		537DF2D72545C290009DFD48 /* Spinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537DF2D62545C290009DFD48 /* Spinning.swift */; };
 		53D042C0251C94F90008DEA8 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D042BF251C94F90008DEA8 /* Array+Identifiable.swift */; };
 		53D042C4251C975D0008DEA8 /* EmojiCardBattleGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D042C3251C975D0008DEA8 /* EmojiCardBattleGame.swift */; };
 		53D042C7251CC6F90008DEA8 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D042C6251CC6F90008DEA8 /* Grid.swift */; };
@@ -62,6 +63,7 @@
 		536F643F251C720800089B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		536F6446251C758400089B68 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		536F644B251C773E00089B68 /* Cardify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
+		537DF2D62545C290009DFD48 /* Spinning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spinning.swift; sourceTree = "<group>"; };
 		53D042BF251C94F90008DEA8 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		53D042C3251C975D0008DEA8 /* EmojiCardBattleGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCardBattleGame.swift; sourceTree = "<group>"; };
 		53D042C6251CC6F90008DEA8 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				53E5F0702541AD3900D0FC11 /* LandScapeView.swift */,
 				536F6446251C758400089B68 /* CardView.swift */,
 				536F644B251C773E00089B68 /* Cardify.swift */,
+				537DF2D62545C290009DFD48 /* Spinning.swift */,
 				5353E69125309AB0003D5554 /* SFIcon.swift */,
 				53D042DD251CF62A0008DEA8 /* Buttonify.swift */,
 				5353E68A25308AFB003D5554 /* IndicatorAlert.swift */,
@@ -264,6 +267,7 @@
 				535A30D1254454C8000AAF9A /* BattleTheme.swift in Sources */,
 				536F644C251C773E00089B68 /* Cardify.swift in Sources */,
 				535A30DA254467A8000AAF9A /* ElementTriangle.swift in Sources */,
+				537DF2D72545C290009DFD48 /* Spinning.swift in Sources */,
 				53D042C0251C94F90008DEA8 /* Array+Identifiable.swift in Sources */,
 				53D042CA251CC6FF0008DEA8 /* GridLayout.swift in Sources */,
 				530CE5EA251DE7B300388976 /* MainMenuView.swift in Sources */,

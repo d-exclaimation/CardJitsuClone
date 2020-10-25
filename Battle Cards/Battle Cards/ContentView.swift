@@ -54,9 +54,9 @@ struct ContentView: View {
                 HStack{
                     ForEach(emojiCardGame.playerHand) { card in
                         if isDrag {
-                            setDropCard(card: card).transition(.scale)
+                            setDropCard(card: card).transition(AnyTransition.opacity.combined(with: .offset(x: 0, y: -100)))
                         } else {
-                            setTapCard(card: card).transition(.offset(x: movement, y: -cardSwing))
+                            setTapCard(card: card).transition(AnyTransition.scale.combined(with: .offset(x: 0, y: -100)))
                         }
                     }
                     
@@ -101,9 +101,19 @@ struct ContentView: View {
     // Background methods with given gameColor
     @ViewBuilder private func setBackground() -> some View {
         // 3 rectangles at different angles
-        Rectangle().foregroundColor(gameColor).ignoresSafeArea(.all)
-        Rectangle().foregroundColor(.white).opacity(0.2).rotationEffect(Angle.degrees(9)).ignoresSafeArea(.all)
-        Rectangle().foregroundColor(.white).opacity(0.1).rotationEffect(Angle.degrees(-69)).ignoresSafeArea(.all)
+        Rectangle()
+            .foregroundColor(gameColor)
+            .ignoresSafeArea(.all)
+        Rectangle()
+            .foregroundColor(.white)
+            .opacity(0.2)
+            .rotationEffect(Angle.degrees(9))
+            .ignoresSafeArea(.all)
+        Rectangle()
+            .foregroundColor(.white)
+            .opacity(0.1)
+            .rotationEffect(Angle.degrees(-69))
+            .ignoresSafeArea(.all)
     }
     
     private func setTapCard(card: BattleSystem<Color, String>.Card) -> some View {
@@ -209,12 +219,11 @@ struct ContentView: View {
     
     private func chooseCard(card: BattleSystem<Color, String>.Card) {
         // Check if selected card is real
-        guard let chosenCardIndex = emojiCardGame.playerHand.firstIndexOf(element: card) else {
+        guard emojiCardGame.playerHand.firstIndexOf(element: card) != nil else {
             return
         }
         audio.playSound(.flip)
         // Calculate card animation given index
-        cardMovement(for: chosenCardIndex)
         // Flip Table for cool effects
         emojiCardGame.flipTable()
         // With animation, notify the model that player has chosen a card
@@ -224,23 +233,6 @@ struct ContentView: View {
             let gameEnded = emojiCardGame.endGame == .win || emojiCardGame.endGame == .lose
             showBank = gameEnded
             showAlert = gameEnded
-        }
-    }
-    
-    
-    private func cardMovement(for id: Int) {
-        // For each id specify x movement
-        switch id {
-            case 0:
-                movement = 15
-            case 1:
-                movement = -10
-            case 2:
-                movement = -75
-            case 3:
-                movement = -150
-            default:
-                movement = 0
         }
     }
     

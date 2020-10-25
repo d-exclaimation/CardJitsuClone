@@ -15,6 +15,7 @@ struct ThemeChooser: View {
     var themes: [BattleTheme] = BattleTheme.all
     @State private var themeDraft: BattleTheme
     @State private var gestureDraft: Bool
+    private let audio: SoundManager = SoundManager()
     
     init(isPresented: Binding<Bool>, theme: Binding<BattleTheme>, isDrag: Binding<Bool>) {
         _theme = theme
@@ -60,6 +61,7 @@ struct ThemeChooser: View {
     
     var cancel: some View {
         Button {
+            audio.playSound(.nomatch)
             isPresented.toggle()
         } label: {
             Text("Cancel")
@@ -73,6 +75,7 @@ struct ThemeChooser: View {
             isDrag = gestureDraft
             let json = try? JSONEncoder().encode(isDrag)
             UserDefaults.standard.set(json, forKey: MainMenuView.untitled)
+            audio.playSound(.match)
             isPresented.toggle()
         } label: {
             Text("Done")

@@ -97,7 +97,7 @@ struct MainMenuView: View {
                 
             }
             .navigationBarHidden(true)
-            LandScapeView(gameBackground: Color(chosenTheme.themeBackground))
+            LandScapeView(theme: chosenTheme)
         }
     }
     
@@ -108,16 +108,18 @@ struct MainMenuView: View {
         Rectangle()
             .foregroundColor(Color(chosenTheme.themeBackground))
             .ignoresSafeArea(.all)
-        Rectangle()
-            .foregroundColor(.white)
-            .opacity(0.2)
-            .rotationEffect(Angle.degrees(9))
-            .ignoresSafeArea(.all)
-        Rectangle()
-            .foregroundColor(.white)
-            .opacity(0.1)
-            .rotationEffect(Angle.degrees(-69))
-            .ignoresSafeArea(.all)
+        Group {
+            Rectangle()
+                .foregroundColor(.white)
+                .opacity(0.2)
+                .rotationEffect(Angle.degrees(9))
+                .ignoresSafeArea(.all)
+            Rectangle()
+                .foregroundColor(.white)
+                .opacity(0.1)
+                .rotationEffect(Angle.degrees(-69))
+                .ignoresSafeArea(.all)
+        }
     }
     
     
