@@ -206,7 +206,7 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
         }
         
         var description: String {
-            "Card of \(indicator), with power \(power) with id \(id.uuidString)"
+            "Card of \(indicator), with power \(power)"
         }
         
         static public func == (lhs: Card, rhs: Card) -> Bool {
@@ -216,22 +216,22 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
         static public func > (lhs: Card, rhs: Card) -> Bool {
             switch lhs.indicator {
                 case .scissors:
-                    return rhs.indicator == .paper ? true : false
+                    return rhs.indicator == .paper
                 case .paper:
-                    return rhs.indicator == .rock ? true : false
+                    return rhs.indicator == .rock
                 case .rock:
-                    return rhs.indicator == .scissors ? true : false
+                    return rhs.indicator == .scissors
             }
         }
         
         static public func < (lhs: Card, rhs: Card) -> Bool {
             switch lhs.indicator {
                 case .scissors:
-                    return rhs.indicator == .rock ? true : false
+                    return rhs.indicator == .rock
                 case .paper:
-                    return rhs.indicator == .scissors ? true : false
+                    return rhs.indicator == .scissors
                 case .rock:
-                    return rhs.indicator == .paper ? true : false
+                    return rhs.indicator == .paper
             }
         }
     }
