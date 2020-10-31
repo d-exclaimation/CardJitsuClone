@@ -12,7 +12,7 @@ struct ThemeChooser: View {
     @Binding var isPresented: Bool
     @Binding var theme: BattleTheme
     @Binding var isDrag: Bool
-    var themes: [BattleTheme] = BattleTheme.all
+    @State var themes: [BattleTheme] = BattleTheme.all
     @State private var themeDraft: BattleTheme
     @State private var gestureDraft: Bool
     private let audio: SoundManager = SoundManager()
@@ -53,6 +53,10 @@ struct ThemeChooser: View {
                         .tag(false)
                     }
                 }
+                
+                Section(header: Text("Custom Theme")) {
+                    CustomSelectMenu(draft: $themeDraft, themes: $themes)
+                }
             }
             .navigationBarTitle(Text("Settings"))
             .navigationBarItems(leading: cancel, trailing: confirm)
@@ -73,8 +77,7 @@ struct ThemeChooser: View {
         Button {
             theme = themeDraft
             isDrag = gestureDraft
-            let json = try? JSONEncoder().encode(isDrag)
-            UserDefaults.standard.set(json, forKey: MainMenuView.untitled)
+            saveAll()
             audio.playSound(.match)
             isPresented.toggle()
         } label: {
@@ -82,6 +85,27 @@ struct ThemeChooser: View {
                 .foregroundColor(.blue)
         }
     }
+    
+    private func saveAll() {
+        saveThemes()
+        saveGesture()
+        saveChonse()
+    }
+    
+    private func saveGesture() {
+        let json = try? JSONEncoder().encode(isDrag)
+        UserDefaults.standard.set(json, forKey: MainMenuView.untitled)
+    }
+    
+    private func saveThemes() {
+        let file = try? JSONEncoder().encode(BattleTheme.all)
+        UserDefaults.standard.set(file, forKey: MainMenuView.allThemes)
+    }
+    
+    private func saveChonse() {
+        UserDefaults.standard.set(theme.json, forKey: MainMenuView.currentTheme)
+    }
+
 }
 
 struct ThemeChooser_Previews: PreviewProvider {

@@ -22,7 +22,7 @@ struct ContentView: View {
     // MARK: - Drawing constant
     private let audio = SoundManager()
     private let textFontSize: CGFloat = 50
-    private let tableOpacity: Color = Color.black.opacity(0.6)
+    private let tableOpacity: Double = 0.6
     private let tablePads: CGFloat = 40
     private let cornerRad: CGFloat = 20
     private let gamePadding: [CGFloat] = [30, 5]
@@ -84,7 +84,7 @@ struct ContentView: View {
             .padding(gamePadding[0])
             .padding(.bottom, gamePadding[1])
 
-            setUpBank()
+            BankWindowCard(showBank: $showBank, playerBank: emojiCardGame.playerBank, cornerRadius: cornerRad, color: gameColor)
         }
         
         // Alert and Hid Navigation bar
@@ -131,34 +131,6 @@ struct ContentView: View {
             }
     }
     
-    
-    // MARK: - Banks
-    
-    // Setup Player Bank UI
-    private func setUpBank() -> some View {
-        GeometryReader { geometry in
-            bankDisplay(item: emojiCardGame.playerBank, color: gameColor)
-                .frame(width: geometry.size.width*0.9, height: geometry.size.height*0.9)
-                .offset(x: geometry.size.width*0.05, y: showBank ? geometry.size.height*0.05 : geometry.size.height * 1.2)
-        }
-    }
-    
-    // Reusable Bank UI
-    private func bankDisplay(item: [BattleSystem<Color, String>.Card], color: Color) -> some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: cornerRad)
-                .foregroundColor(color)
-                .opacity(0.8)
-            
-            Grid(item) { card in
-                CardView(element: card.element, power: card.power, color: card.color, isFaceUp: card.isFaceUp)
-            }
-        }
-    }
-    
-   
-    
-    
     //  MARK: - Table View Methods
     
     // Table Logic
@@ -182,7 +154,7 @@ struct ContentView: View {
                 tableSet(index: 1)
             }
             .padding()
-            .background(tableOpacity)
+            .background(Color.black.opacity(tableOpacity))
             .cornerRadius(cornerRad)
             .padding(.horizontal, tablePads)
             Spacer()
@@ -227,14 +199,12 @@ struct ContentView: View {
         }
         
         audio.playSound(.flip)
-        
-        // Calculate card animation given index
-        
-        // Flip Table for cool effects
+
         emojiCardGame.flipTable()
         
         // With animation, notify the model that player has chosen a card
         withAnimation(.easeInOut) {
+            
             emojiCardGame.choose(card: card)
             
             // Check whether game ended after model notified, and show bank and alert
@@ -267,6 +237,9 @@ struct ContentView: View {
         }
         return found
     }
+    
+    
+
     
 // Optional: Use the view to decide which card it is. NOTE: The transition of the cardview require to be changed according
     private func decideCard(id: UUID) {

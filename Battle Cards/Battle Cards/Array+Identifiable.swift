@@ -25,4 +25,16 @@ extension Array where Element: Identifiable {
         // find none return nil
         return nil
     }
+
 }
+
+extension Array {
+    var firstHalf: Array<Element> {
+        self.indices.filter{ $0 < self.count / 2 }.map{ self[$0] }
+    }
+    var secondHalf: Array<Element> {
+        self.indices.filter{ $0 >= self.count / 2 }.map{ self[$0] }
+    }
+}
+
+//extension Array where Element == 

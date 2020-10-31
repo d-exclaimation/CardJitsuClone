@@ -10,11 +10,14 @@ import SwiftUI
 struct MainMenuView: View {
     
     static let untitled = "MainMenuView.Untitled"
+    static let allThemes = "MainMenuView.AllThemes"
+    static let currentTheme = "MainMenuView.Theme"
+    
     
     // MARK: - State variables for UX Interaction
     @State private var showSettings: Bool = false
     @State private var showInfos: Bool = false
-    @State private var chosenTheme: BattleTheme = BattleTheme.art
+    @State private var chosenTheme: BattleTheme
     @State private var isDrag: Bool
     
     // MARK: - Drawing Constants
@@ -26,12 +29,32 @@ struct MainMenuView: View {
     private let smolScale: CGSize = CGSize(width: 0.8, height: 0.8)
 
     init() {
+        
+        // Decode gesture preference
         let json: Data? = UserDefaults.standard.data(forKey: MainMenuView.untitled)
         if json != nil, let gesture = try? JSONDecoder().decode(Bool.self, from: json!) {
             _isDrag = State(wrappedValue: Bool(gesture))
         } else {
             _isDrag = State(wrappedValue: false)
         }
+        
+        // Retrieve all themes previously given
+        let savedPrevious = BattleTheme.all.map{$0}
+        let allThemes: Data? = UserDefaults.standard.data(forKey: MainMenuView.allThemes)
+        if allThemes != nil, let dataArray = try? JSONDecoder().decode(Array<BattleTheme>.self, from: allThemes!) {
+            BattleTheme.all = dataArray
+        }
+        
+        // Check if there is new things to add
+        savedPrevious.forEach { theme in
+            if !BattleTheme.all.contains(where: {$0.title == theme.title}) {
+                BattleTheme.all.append(theme)
+            }
+        }
+        
+        let chosenData: Data? = UserDefaults.standard.data(forKey: MainMenuView.currentTheme)
+        _chosenTheme = State(wrappedValue: BattleTheme(json: chosenData) ?? BattleTheme.all.randomElement()!)
+        
     }
     
     // MARK: Body View

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct BattleTheme: Identifiable, Hashable {
+struct BattleTheme: Identifiable, Hashable, CustomStringConvertible, Codable {
     var title: String
     private(set) var id: UUID
     var colorPicker: [UIColor.RGB]
@@ -23,11 +23,31 @@ struct BattleTheme: Identifiable, Hashable {
         themeBackground = background
     }
     
+    init?(json: Data?) {
+        if json != nil, let theme = try? JSONDecoder().decode(BattleTheme.self, from: json!) {
+            self = theme
+        } else {
+            return nil
+        }
+    }
+    
     static func == (lhs: BattleTheme, rhs: BattleTheme) -> Bool {
             return lhs.id == rhs.id
     }
     
-    static var all: [BattleTheme] = [.art, .murica, .pastel, .noir, .covid, .pacman, .wildwest, .physics, .math, .idk]
+    public var description: String {
+        ["Name: \(title)\n",
+         "Colors: \(colorPicker)\n",
+         "Elements: \(elementPicker)\n",
+         "Background: \(themeBackground)\n"
+        ].compressed
+    }
+    
+    var json: Data? {
+        try? JSONEncoder().encode(self)
+    }
+    
+    static var all: [BattleTheme] = [.art, .murica, .pastel, .noir, .covid, .pacman, .wildwest, .physics, .math, .idk, .vehicle, .aircraft, .buildings]
     
     static var art: BattleTheme = BattleTheme(
         name: "artistic",
@@ -97,5 +117,26 @@ struct BattleTheme: Identifiable, Hashable {
         colors: [UIColor.black.rgb, UIColor.systemRed.rgb, UIColor.gold.rgb, UIColor.systemBlue.rgb],
         elements: ["🌀", "🔆", "💢"],
         background: UIColor.systemBlue.rgb
+    )
+    
+    static var vehicle: BattleTheme = BattleTheme(
+        name: "Vehicles",
+        colors: [UIColor.slate.rgb, UIColor.darkSlate.rgb, UIColor.darkerSlate.rgb, UIColor.lightPink.rgb],
+        elements: ["🏎", "🚗", "🏍"],
+        background: UIColor.slate.rgb
+    )
+    
+    static var aircraft: BattleTheme = BattleTheme(
+        name: "Aeronautical",
+        colors: [UIColor.black.rgb, UIColor.systemTeal.rgb, UIColor.blueGray.rgb, UIColor.pastelCream.rgb],
+        elements: ["🛰", "🚀", "🛸"],
+        background: UIColor.systemTeal.rgb
+    )
+    
+    static var buildings: BattleTheme = BattleTheme(
+        name: "Building",
+        colors: [UIColor.systemOrange.rgb, UIColor.pastelRed.rgb, UIColor.systemTeal.rgb, UIColor.visibleWhite.rgb],
+        elements: ["🗼", "⛩", "🏯"],
+        background: UIColor.systemOrange.rgb
     )
 }

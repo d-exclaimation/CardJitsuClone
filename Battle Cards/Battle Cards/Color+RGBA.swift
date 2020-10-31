@@ -16,11 +16,14 @@ extension Color {
 }
 
  extension UIColor {
-     public struct RGB: Hashable, Codable {
+     public struct RGB: Hashable, Codable, CustomStringConvertible {
          var red: CGFloat
          var green: CGFloat
          var blue: CGFloat
          var alpha: CGFloat
+         public var description: String {
+            "R:\(red),G:\(green),B:\(blue)"
+         }
      }
     
      convenience init(_ rgb: RGB) {
@@ -60,4 +63,11 @@ extension UIColor {
     static var lavender: UIColor = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1)
     static var violet: UIColor = UIColor(red: 238/255, green: 130/255, blue: 238/255, alpha: 1)
     static var mediumPurple: UIColor = UIColor(red: 147/255, green: 112/255, blue: 219/255, alpha: 1)
+    
+    static var lightPink: UIColor = UIColor(red: 1, green: 182/225, blue: 193/255, alpha: 1)
+    static var slate: UIColor = UIColor(red: 89/225, green: 91/255, blue: 131/255, alpha: 1)
+    static var darkSlate: UIColor = UIColor(red: 51/255, green: 52/255, blue: 86/255, alpha: 1)
+    static var darkerSlate: UIColor = UIColor(red: 6/255, green: 9/255, blue: 46/255, alpha: 1)
+    static var blueGray: UIColor = UIColor(red: 153/255, green: 168/255, blue: 178/255, alpha: 1)
 }
+
