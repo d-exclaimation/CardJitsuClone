@@ -69,6 +69,7 @@
 		536F6446251C758400089B68 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		536F644B251C773E00089B68 /* Cardify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		537DF2D62545C290009DFD48 /* Spinning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spinning.swift; sourceTree = "<group>"; };
+		53BB6E2B256276F500B287EB /* Battle Cards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Battle Cards.entitlements"; sourceTree = "<group>"; };
 		53D042BF251C94F90008DEA8 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		53D042C3251C975D0008DEA8 /* EmojiCardBattleGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCardBattleGame.swift; sourceTree = "<group>"; };
 		53D042C9251CC6FF0008DEA8 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 		536F6430251C720700089B68 /* Battle Cards */ = {
 			isa = PBXGroup;
 			children = (
+				53BB6E2B256276F500B287EB /* Battle Cards.entitlements */,
 				536F6431251C720700089B68 /* AppDelegate.swift */,
 				536F6433251C720700089B68 /* SceneDelegate.swift */,
 				536607D3251C8EAD0036B4EA /* View Elements */,
@@ -422,6 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Battle Cards/Battle Cards.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Battle Cards/Preview Content\"";
 				DEVELOPMENT_TEAM = 4XB4MN7FPX;
@@ -432,8 +435,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.d.exclaimation.Battle-Cards";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -444,6 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Battle Cards/Battle Cards.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Battle Cards/Preview Content\"";
 				DEVELOPMENT_TEAM = 4XB4MN7FPX;
@@ -454,8 +460,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.d.exclaimation.Battle-Cards";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
