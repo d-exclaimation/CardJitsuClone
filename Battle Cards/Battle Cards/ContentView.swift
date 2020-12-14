@@ -47,7 +47,7 @@ struct ContentView: View {
                 // Table UI
                 setBattleTable()
                     .onDrop(of: ["public.text"], isTargeted: nil) { providers, location in
-                        self.drop(providers: providers)
+                        drop(providers: providers)
                 }
                 
                 // Player Hand UX
