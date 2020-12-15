@@ -2,8 +2,8 @@
 //  Color+RGBA.swift
 //  Memorize
 //
-//  Created by Vincent on 10/14/20.
-//  Copyright © 2020 Vincent. All rights reserved.
+//  The MIT License (MIT)
+//  Copyright © 2020 d-exclaimation
 //
 
 import Foundation

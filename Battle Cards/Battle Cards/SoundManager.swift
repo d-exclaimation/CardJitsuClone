@@ -2,8 +2,8 @@
 //  SoundManager.swift
 //  MatchApp
 //
-//  Created by Vincent on 8/22/20.
-//  Copyright © 2020 vincent. All rights reserved.
+//  The MIT License (MIT)
+//  Copyright © 2020 d-exclaimation
 //
 
 import Foundation

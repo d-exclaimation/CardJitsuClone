@@ -2,7 +2,8 @@
 //  CardVie.swift
 //  Battle Cards
 //
-//  Created by Vincent on 9/24/20.
+//  The MIT License (MIT)
+//  Copyright © 2020 d-exclaimation
 //
 
 import SwiftUI

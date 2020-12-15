@@ -2,8 +2,8 @@
 //  GridLayout.swift
 //  Memorize
 //
-//  Created by Vincent on 9/18/20.
-//  Copyright © 2020 Vincent. All rights reserved.
+//  The MIT License (MIT)
+//  Copyright © 2020 d-exclaimation
 //
 
 import Foundation

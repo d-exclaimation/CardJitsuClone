@@ -2,8 +2,9 @@
 //  MainMenuView.swift
 //  Battle Cards
 //
-//  Created by Vincent on 9/25/20.
-// Idk
+//  The MIT License (MIT)
+//  Copyright © 2020 d-exclaimation
+//
 
 import SwiftUI
 

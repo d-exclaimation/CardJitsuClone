@@ -13,3 +13,6 @@ Most of code were purely from me. However, some of them were not, but all of the
 struct BattleSystem { ... }
 struct Grid { ... }
 ```
+
+The MIT License (MIT)
+Copyright © 2020 d-exclaimation

@@ -2,7 +2,8 @@
 //  Spinning.swift
 //  ArtMaker
 //
-//  Created by Vincent on 10/13/20.
+//  The MIT License (MIT)
+//  Copyright © 2020 d-exclaimation
 //
 
 import Foundation
