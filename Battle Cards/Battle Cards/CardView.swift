@@ -46,6 +46,6 @@ struct CardView: View {
 
 struct CardVie_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(element: "☘️", power: 10, color: Color.blue, isFaceUp: true)
+        CardView(element: "💧", power: 10, color: Color.purple, isFaceUp: true)
     }
 }

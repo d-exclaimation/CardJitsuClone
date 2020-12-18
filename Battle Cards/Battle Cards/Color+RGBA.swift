@@ -22,7 +22,7 @@ extension Color {
          var blue: CGFloat
          var alpha: CGFloat
          public var description: String {
-            "R:\(red),G:\(green),B:\(blue)"
+            "R:\(String(format: "%.1f", Double(red))), G:\(String(format: "%.1f", Double(green))), B:\(String(format: "%.1f", Double(green)))"
          }
      }
     

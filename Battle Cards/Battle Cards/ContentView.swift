@@ -85,7 +85,7 @@ struct ContentView: View {
             .padding(gamePadding[0])
             .padding(.bottom, gamePadding[1])
 
-            BankWindowCard(showBank: $showBank, playerBank: emojiCardGame.playerBank, cornerRadius: cornerRad, color: gameColor)
+            BankWindowCard(showBank: $showBank, playerBank: emojiCardGame.playerBank, cornerRadius: cornerRad)
         }
         
         // Alert and Hid Navigation bar

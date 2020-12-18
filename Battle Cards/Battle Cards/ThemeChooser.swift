@@ -90,7 +90,7 @@ struct ThemeChooser: View {
     private func saveAll() {
         saveThemes()
         saveGesture()
-        saveChonse()
+        saveChoosen()
     }
     
     private func saveGesture() {
@@ -103,7 +103,7 @@ struct ThemeChooser: View {
         UserDefaults.standard.set(file, forKey: MainMenuView.allThemes)
     }
     
-    private func saveChonse() {
+    private func saveChoosen() {
         UserDefaults.standard.set(theme.json, forKey: MainMenuView.currentTheme)
     }
 

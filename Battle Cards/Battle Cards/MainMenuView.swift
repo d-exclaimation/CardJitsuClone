@@ -45,7 +45,7 @@ struct MainMenuView: View {
         if allThemes != nil, let dataArray = try? JSONDecoder().decode(Array<BattleTheme>.self, from: allThemes!) {
             BattleTheme.all = dataArray
         }
-        
+
         // Check if there is new things to add
         savedPrevious.forEach { theme in
             if !BattleTheme.all.contains(where: {$0.title == theme.title}) {
@@ -58,7 +58,7 @@ struct MainMenuView: View {
         
     }
     
-    // MARK: Body View
+    // MARK: - Body View
     var body: some View {
         NavigationView {
             

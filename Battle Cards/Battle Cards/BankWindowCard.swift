@@ -13,22 +13,24 @@ struct BankWindowCard: View {
     @Binding var showBank: Bool
     var playerBank: [BattleSystem<Color, String>.Card]
     var cornerRadius: CGFloat
-    var color: Color
     
     var body: some View {
         GeometryReader { geometry in
-            bankDisplay(item: playerBank, color: color)
-                .frame(width: geometry.size.width*0.9, height: geometry.size.height*0.9)
-                .offset(x: geometry.size.width*0.05, y: showBank ? geometry.size.height*0.05 : geometry.size.height * 1.2)
+            bankDisplay(item: playerBank)
+                .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
+                .offset(x: geometry.size.width * 0.05, y: showBank ? geometry.size.height * 0.05 : geometry.size.height * 1.2)
         }
     }
     
     // Reusable Bank UI
-    private func bankDisplay(item: [BattleSystem<Color, String>.Card], color: Color) -> some View {
+    private func bankDisplay(item: [BattleSystem<Color, String>.Card]) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: cornerRadius)
-                .foregroundColor(color)
+                .foregroundColor(Color.white)
                 .opacity(0.8)
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .stroke()
+                .shadow(color: Color.black.opacity(0.5), radius: 1, x: 3, y: 4)
             
             Grid(item) { card in
                 CardView(element: card.element, power: card.power, color: card.color, isFaceUp: card.isFaceUp)
@@ -36,6 +38,7 @@ struct BankWindowCard: View {
         }
     }
 }
+
 //
 //struct BankWindowCard_Previews: PreviewProvider {
 //    static var previews: some View {
