@@ -33,12 +33,12 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             setBackground() // Background method
-            
+
             // Main UI/UX
             VStack {
-                
+        
                 // Enemy Hand UI
-                HStack{
+                HStack {
                     ForEach(emojiCardGame.enemyHand) { card in
                         CardView(element: card.element, power: card.power, color: card.color, isFaceUp: false)
                     }
@@ -47,24 +47,26 @@ struct ContentView: View {
                 
                 // Table UI
                 setBattleTable()
-                    .onDrop(of: ["public.text"], isTargeted: nil) { providers, location in
+                    .onDrop(of: ["public.text"], isTargeted: nil) { providers, _ in
                         drop(providers: providers)
                 }
-                
+
                 // Player Hand UX
-                HStack{
+                HStack {
                     ForEach(emojiCardGame.playerHand) { card in
                         if isDrag {
-                            setDropCard(card: card).transition(AnyTransition.opacity.combined(with: .offset(x: 0, y: -100)))
+                            setDropCard(card: card).transition(AnyTransition.opacity
+                                                                .combined(with: .offset(x: 0, y: -100)))
                         } else {
-                            setTapCard(card: card).transition(AnyTransition.scale.combined(with: .offset(x: 0, y: -100)))
+                            setTapCard(card: card).transition(AnyTransition.scale
+                                                                .combined(with: .offset(x: 0, y: -100)))
                         }
                     }
-                    
+
                 }
-                
+
                 // Bank Buttons UX
-                Button{
+                Button {
                     withAnimation(.easeInOut) {
                         showBank.toggle()
                         emojiCardGame.hidePlayer()
@@ -72,11 +74,11 @@ struct ContentView: View {
                 } label: {
                     Text("My Bank")
                         .font(.body)
-                        .buttonify(color: showBank ? Color.black : Color.white, size: .medium, fontColor: showBank ? Color.white : Color.black)
+                        // swiftlint:disable all
+                        .buttonify(color: showBank ? .black : .white, size: .medium, fontColor: showBank ? .white : .black)
                 }
                 .offset(x: 0, y: 30)
-                
-                
+
             }
             .onAppear {
                 audio.playSound(.shuffle)
@@ -87,18 +89,16 @@ struct ContentView: View {
 
             BankWindowCard(showBank: $showBank, playerBank: emojiCardGame.playerBank, cornerRadius: cornerRad)
         }
-        
+
         // Alert and Hid Navigation bar
         .navigationBarHidden(true)
         .alert(isPresented: $showAlert) {
             showAlert(title: emojiCardGame.endGame == .win ? "Win" : "Lose", message: "Reset Game?")
         }
     }
-    
-    
-    
+
     // MARK: - Methods
-    
+
     // Background methods with given gameColor
     @ViewBuilder private func setBackground() -> some View {
         // 3 rectangles at different angles
@@ -116,14 +116,14 @@ struct ContentView: View {
             .rotationEffect(Angle.degrees(-69))
             .ignoresSafeArea(.all)
     }
-    
+
     private func setTapCard(card: BattleSystem<Color, String>.Card) -> some View {
         CardView(element: card.element, power: card.power, color: card.color, isFaceUp: card.isFaceUp)
             .onTapGesture {
                 chooseCard(card: card)
             }
     }
-    
+
     private func setDropCard(card: BattleSystem<Color, String>.Card) -> some View {
         CardView(element: card.element, power: card.power, color: card.color, isFaceUp: card.isFaceUp)
             .onDrag {
@@ -131,9 +131,8 @@ struct ContentView: View {
                 return NSItemProvider(object: uuid as NSString)
             }
     }
-    
-    //  MARK: - Table View Methods
-    
+
+    // MARK: - Table View Methods
     // Table Logic
     private func tableLogo() -> some View {
         if emojiCardGame.wonRound {
@@ -142,7 +141,7 @@ struct ContentView: View {
             return IndicatorAlert(systemName: "xmark.circle.fill", color: .red, scale: .medium)
         }
     }
-    
+
     // Table UI Setup
     private func setBattleTable() -> some View {
         VStack {
@@ -161,26 +160,21 @@ struct ContentView: View {
             Spacer()
         }
     }
-    
     // Cards to display for the table
     private func tableSet(index: Int) -> CardView {
-        CardView(element: emojiCardGame.currentTable[index].element, power:  emojiCardGame.currentTable[index].power, color:  emojiCardGame.currentTable[index].color, isFaceUp:  emojiCardGame.currentTable[index].isFaceUp)
+        let card = emojiCardGame.currentTable[index]
+        return CardView(element: card.element, power: card.power, color: card.color, isFaceUp: card.isFaceUp)
     }
-    
-    
-    
-    
-    //  MARK: - Game Misc
-    
+
+    // MARK: - Game Misc
     // Alert Methods
     private func showAlert(title: String, message: String) -> Alert {
-        if emojiCardGame.endGame == .win { audio.playSound(.match) }
-        else { audio.playSound(.nomatch)}
+        if emojiCardGame.endGame == .win {
+            audio.playSound(.match)
+        } else { audio.playSound(.nomatch)}
         return Alert(title: Text(title), message: Text(message), dismissButton: Alert.Button.destructive(Text("Ok")) {
-            
             // Show player current bank
             showBank.toggle()
-            
             // Resets Game
             withAnimation(.easeInOut(duration: 0.2)) {
                 emojiCardGame.resetGame()
@@ -188,47 +182,37 @@ struct ContentView: View {
             }
         })
     }
-    
-    
+
     // MARK: - Action Methods
-    
     private func chooseCard(card: BattleSystem<Color, String>.Card) {
-        
+
         // Check if selected card is real
         guard emojiCardGame.playerHand.firstIndexOf(element: card) != nil else {
             return
         }
-        
         audio.playSound(.flip)
 
         emojiCardGame.flipTable()
-        
         // With animation, notify the model that player has chosen a card
         withAnimation(.easeInOut) {
-            
             emojiCardGame.choose(card: card)
-            
             // Check whether game ended after model notified, and show bank and alert
             let gameEnded = emojiCardGame.endGame == .win || emojiCardGame.endGame == .lose
             showBank = gameEnded
             showAlert = gameEnded
         }
     }
-    
+
     // Method for finding dropped card
     private func drop(providers: [NSItemProvider]) -> Bool {
-        
         // Since dropped item must be an NSItemProvider Array, it is best to extract loaded objects as a string
         let found = providers.loadObjects(ofType: String.self) { string in
-            
             // If the string was a uuidString, it is possible to change back to UUID
             if let id = UUID(uuidString: string) {
-                
                 // Using the View Model to decide which card it is and notify the model
                 withAnimation {
                     emojiCardGame.chooseIndex(id: id)
                     audio.playSound(.flip)
-                    
                     // Check whether game ended after model notified, and show bank and alert
                     let gameEnded = emojiCardGame.endGame == .win || emojiCardGame.endGame == .lose
                     showBank = gameEnded
@@ -238,33 +222,25 @@ struct ContentView: View {
         }
         return found
     }
-    
-    
 
-    
-// Optional: Use the view to decide which card it is. NOTE: The transition of the cardview require to be changed according
+// Optional: Use the view to decide which card it is.
+// NOTE: The transition of the cardview require to be changed according
     private func decideCard(id: UUID) {
-        
         // Call in the method for finding which card it is
         if let card = findSpecificCard(id: id) {
-            
             // recall the same method for choosing regular card
             chooseCard(card: card)
         }
     }
-    
+
     // Optional method if you want to preserve the animation
     private func findSpecificCard(id: UUID) -> BattleSystem<Color, String>.Card? {
         // Find the card, given an id, if not return nil
-        for index in emojiCardGame.playerHand.indices {
-            if id == emojiCardGame.playerHand[index].id {
-                return emojiCardGame.playerHand[index]
-            }
+        for index in emojiCardGame.playerHand.indices where id == emojiCardGame.playerHand[index].id {
+            return emojiCardGame.playerHand[index]
         }
         return nil
     }
-    
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

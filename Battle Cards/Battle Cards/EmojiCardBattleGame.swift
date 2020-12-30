@@ -18,8 +18,7 @@ class EmojiCardBattleGame: ObservableObject {
         gameTheme = theme
         battleCards = EmojiCardBattleGame.createNewGame(colors: theme.colorPicker.map { Color($0) }, elements: theme.elementPicker)
     }
-    
-    
+
     // MARK: - Static functions
     private static func createNewGame(colors: [Color], elements: [String]) -> BattleSystem<Color, String> {
         BattleSystem<Color, String>(makeColor: { colors[$0] }, makeElement: { elements[$0] })
