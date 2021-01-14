@@ -42,32 +42,32 @@ extension Color {
 }
 
 extension UIColor {
-    static var gold: UIColor = UIColor(red: 255/255, green: 215/255, blue: 0, alpha: 1)
-    static var varus: UIColor = UIColor(red: 0, green: 117/255, blue: 94/255, alpha: 1)
-    static var varus2: UIColor = UIColor(red: 206/255, green: 103/255, blue: 166/255, alpha: 1)
+    static let gold: UIColor = UIColor(red: 255/255, green: 215/255, blue: 0, alpha: 1)
+    static let varus: UIColor = UIColor(red: 0, green: 117/255, blue: 94/255, alpha: 1)
+    static let varus2: UIColor = UIColor(red: 206/255, green: 103/255, blue: 166/255, alpha: 1)
     
-    static var visibleWhite: UIColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
-    static var lightGray: UIColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
-    static var darkGray: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+    static let visibleWhite: UIColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+    static let lightGray: UIColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
+    static let darkGray: UIColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
     
-    static var pastelCyan: UIColor = UIColor(red: 0, green: 243/255, blue: 224/255, alpha: 1)
-    static var pastelGreen: UIColor = UIColor(red: 103/255, green: 206/255, blue: 166/255, alpha: 1)
-    static var pastelCream: UIColor = UIColor(red: 254/255, green: 213/255, blue: 181/255, alpha: 1)
-    static var pastelRed: UIColor = UIColor(red: 114/255, green: 12/255, blue: 63/255, alpha: 1)
+    static let pastelCyan: UIColor = UIColor(red: 0, green: 243/255, blue: 224/255, alpha: 1)
+    static let pastelGreen: UIColor = UIColor(red: 103/255, green: 206/255, blue: 166/255, alpha: 1)
+    static let pastelCream: UIColor = UIColor(red: 254/255, green: 213/255, blue: 181/255, alpha: 1)
+    static let pastelRed: UIColor = UIColor(red: 114/255, green: 12/255, blue: 63/255, alpha: 1)
     
     
-    static var spruceBrown: UIColor = UIColor(red: 83/255, green: 52/255, blue: 0, alpha: 1)
-    static var darkBrown: UIColor = UIColor(red: 85/255, green: 37/255, blue: 0, alpha: 1)
+    static let spruceBrown: UIColor = UIColor(red: 83/255, green: 52/255, blue: 0, alpha: 1)
+    static let darkBrown: UIColor = UIColor(red: 85/255, green: 37/255, blue: 0, alpha: 1)
     
-    static var darkPurple: UIColor = UIColor(red: 89/255, green: 24/255, blue: 70/255, alpha: 1)
-    static var lavender: UIColor = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1)
-    static var violet: UIColor = UIColor(red: 238/255, green: 130/255, blue: 238/255, alpha: 1)
-    static var mediumPurple: UIColor = UIColor(red: 147/255, green: 112/255, blue: 219/255, alpha: 1)
+    static let darkPurple: UIColor = UIColor(red: 89/255, green: 24/255, blue: 70/255, alpha: 1)
+    static let lavender: UIColor = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1)
+    static let violet: UIColor = UIColor(red: 238/255, green: 130/255, blue: 238/255, alpha: 1)
+    static let mediumPurple: UIColor = UIColor(red: 147/255, green: 112/255, blue: 219/255, alpha: 1)
     
-    static var lightPink: UIColor = UIColor(red: 1, green: 182/225, blue: 193/255, alpha: 1)
-    static var slate: UIColor = UIColor(red: 89/225, green: 91/255, blue: 131/255, alpha: 1)
-    static var darkSlate: UIColor = UIColor(red: 51/255, green: 52/255, blue: 86/255, alpha: 1)
-    static var darkerSlate: UIColor = UIColor(red: 6/255, green: 9/255, blue: 46/255, alpha: 1)
-    static var blueGray: UIColor = UIColor(red: 153/255, green: 168/255, blue: 178/255, alpha: 1)
+    static let lightPink: UIColor = UIColor(red: 1, green: 182/225, blue: 193/255, alpha: 1)
+    static let slate: UIColor = UIColor(red: 89/225, green: 91/255, blue: 131/255, alpha: 1)
+    static let darkSlate: UIColor = UIColor(red: 51/255, green: 52/255, blue: 86/255, alpha: 1)
+    static let darkerSlate: UIColor = UIColor(red: 6/255, green: 9/255, blue: 46/255, alpha: 1)
+    static let blueGray: UIColor = UIColor(red: 153/255, green: 168/255, blue: 178/255, alpha: 1)
 }
 
