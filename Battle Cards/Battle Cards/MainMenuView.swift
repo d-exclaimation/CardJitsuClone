@@ -71,7 +71,7 @@ struct MainMenuView: View {
                     Spacer()
                     // Title
                     Image("title")
-                        .padding(.bottom, 90)
+                        .padding(.top, 90)
                         .scaleEffect(settingsScale)
                     
                     // Main Play Button
