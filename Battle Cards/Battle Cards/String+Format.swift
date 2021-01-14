@@ -10,10 +10,8 @@ import Foundation
 
 extension String {
     func capitalized() -> String {
-        if self.count < 1 { return self }
-        var newValue = ""
-        self.map { String($0) }.forEach { newValue += newValue.count == 0 ? $0.uppercased() : $0 }
-        return newValue
+        if count < 1 { return self }
+        return prefix(1).uppercased() + dropFirst()
     }
 }
 
