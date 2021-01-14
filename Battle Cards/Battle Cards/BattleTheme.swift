@@ -50,91 +50,91 @@ struct BattleTheme: Identifiable, Hashable, CustomStringConvertible, Codable {
     
     static var all: [BattleTheme] = [.art, .murica, .pastel, .noir, .covid, .pacman, .wildwest, .physics, .math, .idk, .vehicle, .aircraft, .buildings]
     
-    static var art: BattleTheme = BattleTheme(
+    static let art: BattleTheme = BattleTheme(
         name: "artistic",
         colors: [UIColor.systemOrange.rgb, UIColor.gold.rgb, UIColor.systemBlue.rgb, UIColor.systemPurple.rgb],
         elements: ["🔥", "☘️", "💧"],
         background: UIColor.darkBrown.rgb
     )
     
-    static var murica: BattleTheme = BattleTheme(
+    static let murica: BattleTheme = BattleTheme(
         name: "murica",
         colors: [UIColor.visibleWhite.rgb, UIColor.systemIndigo.rgb, UIColor.black.rgb, UIColor.systemPink.rgb],
         elements: ["🔫", "🔪", "💸"],
         background: UIColor.red.rgb
     )
     
-    static var pastel: BattleTheme = BattleTheme(
+    static let pastel: BattleTheme = BattleTheme(
         name: "tropical",
         colors: [UIColor.gold.rgb, UIColor.pastelGreen.rgb, UIColor.pastelCream.rgb, UIColor.pastelCyan.rgb],
         elements: ["🥵", "🥶", "😰"],
         background: UIColor.pastelCream.rgb
     )
     
-    static var noir: BattleTheme = BattleTheme(
+    static let noir: BattleTheme = BattleTheme(
         name: "noir",
         colors: [UIColor.black.rgb, UIColor.darkGray.rgb, UIColor.visibleWhite.rgb, UIColor.lightGray.rgb],
         elements: ["✂️", "📃", "🌑"],
         background: UIColor.black.rgb
     )
     
-    static var covid: BattleTheme = BattleTheme(
+    static let covid: BattleTheme = BattleTheme(
         name: "Outbreak",
         colors: [UIColor.systemOrange.rgb ,UIColor.systemRed.rgb, UIColor.varus.rgb, UIColor.varus2.rgb],
         elements: ["🦠", "👤", "💉"],
         background: UIColor.varus.rgb
     )
     
-    static var pacman: BattleTheme = BattleTheme(
+    static let pacman: BattleTheme = BattleTheme(
         name: "Retro",
         colors: [UIColor.systemIndigo.rgb, UIColor.lightGray.rgb, UIColor.black.rgb ,UIColor.gold.rgb],
         elements: ["😶", "👾", "👻"],
         background: UIColor.systemIndigo.rgb
     )
    
-    static var wildwest: BattleTheme = BattleTheme(
+    static let wildwest: BattleTheme = BattleTheme(
         name: "Cowboys",
         colors: [UIColor.spruceBrown.rgb, UIColor.gold.rgb, UIColor.systemOrange.rgb ,UIColor.brown.rgb],
         elements: ["🤠", "🐎", "💰"],
         background: UIColor.brown.rgb
     )
     
-    static var physics: BattleTheme = BattleTheme(
+    static let physics: BattleTheme = BattleTheme(
         name: "Physics",
         colors: [UIColor.gold.rgb, UIColor.systemOrange.rgb, UIColor.systemRed.rgb, UIColor.pastelRed.rgb],
         elements: ["💎", "🧪", "💨"],
         background: UIColor.darkPurple.rgb
     )
     
-    static var math: BattleTheme = BattleTheme(
+    static let math: BattleTheme = BattleTheme(
         name: "Maths",
         colors: [UIColor.violet.rgb, UIColor.systemPurple.rgb, UIColor.lavender.rgb, UIColor.mediumPurple.rgb],
         elements: ["✖️", "➗", "➕"],
         background: UIColor.mediumPurple.rgb
     )
     
-    static var idk: BattleTheme = BattleTheme(
+    static let idk: BattleTheme = BattleTheme(
         name: "I gave up",
         colors: [UIColor.black.rgb, UIColor.systemRed.rgb, UIColor.gold.rgb, UIColor.systemBlue.rgb],
         elements: ["🌀", "🔆", "💢"],
         background: UIColor.systemBlue.rgb
     )
     
-    static var vehicle: BattleTheme = BattleTheme(
+    static let vehicle: BattleTheme = BattleTheme(
         name: "Vehicles",
         colors: [UIColor.slate.rgb, UIColor.darkSlate.rgb, UIColor.darkerSlate.rgb, UIColor.lightPink.rgb],
         elements: ["🏎", "🚗", "🏍"],
         background: UIColor.slate.rgb
     )
     
-    static var aircraft: BattleTheme = BattleTheme(
+    static let aircraft: BattleTheme = BattleTheme(
         name: "Aeronautical",
         colors: [UIColor.black.rgb, UIColor.systemTeal.rgb, UIColor.blueGray.rgb, UIColor.pastelCream.rgb],
         elements: ["🛰", "🚀", "🛸"],
         background: UIColor.systemTeal.rgb
     )
     
-    static var buildings: BattleTheme = BattleTheme(
+    static let buildings: BattleTheme = BattleTheme(
         name: "Building",
         colors: [UIColor.systemOrange.rgb, UIColor.pastelRed.rgb, UIColor.systemTeal.rgb, UIColor.visibleWhite.rgb],
         elements: ["🗼", "⛩", "🏯"],
