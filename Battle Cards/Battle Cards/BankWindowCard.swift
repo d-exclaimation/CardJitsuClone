@@ -18,8 +18,9 @@ struct BankWindowCard: View {
         GeometryReader { geometry in
             bankDisplay(item: playerBank)
                 .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
-                .offset(x: geometry.size.width * 0.05, y: showBank ? geometry.size.height * 0.05 : geometry.size.height * 1.2)
+                .offset(x: geometry.size.width * 0.05, y: showBank ? .zero : geometry.size.height * 1.2)
         }
+        .navigationBarBackButtonHidden(showBank)
     }
     
     // Reusable Bank UI

@@ -26,7 +26,7 @@ struct ContentView: View {
     private let tableOpacity: Double = 0.6
     private let tablePads: CGFloat = 40
     private let cornerRad: CGFloat = 20
-    private let gamePadding: [CGFloat] = [30, 5]
+    private let gamePadding: [CGFloat] = [-40, 5]
     private let cardSwing: CGFloat = 150
     
     // MARK: - Main View
@@ -77,21 +77,21 @@ struct ContentView: View {
                         // swiftlint:disable all
                         .buttonify(color: showBank ? .black : .white, size: .medium, fontColor: showBank ? .white : .black)
                 }
-                .offset(x: 0, y: 30)
 
             }
             .onAppear {
                 audio.playSound(.shuffle)
             }
             .font(.system(size: textFontSize))
-            .padding(gamePadding[0])
+            .padding(.top, gamePadding[0])
             .padding(.bottom, gamePadding[1])
 
             BankWindowCard(showBank: $showBank, playerBank: emojiCardGame.playerBank, cornerRadius: cornerRad)
         }
 
         // Alert and Hid Navigation bar
-        .navigationBarHidden(true)
+        .navigationViewStyle(StackNavigationViewStyle())
+
         .alert(isPresented: $showAlert) {
             showAlert(title: emojiCardGame.endGame == .win ? "Win" : "Lose", message: "Reset Game?")
         }
