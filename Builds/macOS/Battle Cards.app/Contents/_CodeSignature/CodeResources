@@ -4,13 +4,17 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Resources/AppIcon.icns</key>
+		<data>
+		Yy4lCzRv0CqohdX5262pGm7is8U=
+		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		ua4lwAZf4wywr0fGXcDwJ/r6OS8=
+		6qqWeeDEsFMFieDddeuX1uRH5+c=
 		</data>
 		<key>Resources/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		SN5mHGvrZk1HoBy484UHTlqwm40=
+		JQ6UoLajXGG3M/Nr9jNipK1rhZU=
 		</data>
 		<key>Resources/Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -18,7 +22,7 @@
 		</data>
 		<key>Resources/Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		ZRUqud9u/CcITKwlbp5XcXq1mGA=
+		+iNiQGFgK2IiH0Qn67s+DwbSyVY=
 		</data>
 		<key>Resources/cardflip.wav</key>
 		<data>
@@ -32,10 +36,6 @@
 		<data>
 		gwchAiTvSAwQgwRrUe68CZgotqE=
 		</data>
-		<key>Resources/icon.png</key>
-		<data>
-		gQSHE03O3NGDkqq99iK6h9MQdQ4=
-		</data>
 		<key>Resources/shuffle.wav</key>
 		<data>
 		lm3SCCm67JyWylbPgyQ2F/DmwzQ=
@@ -43,18 +43,25 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Resources/AppIcon.icns</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9KcWYU8bX+Z/Rf61A56+9thZXarOrZayNNgwA0iQDAU=
+			</data>
+		</dict>
 		<key>Resources/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pClVL1ifCaIXpdinjtfb8o+8y/pHVtk+w0tei6hxWi0=
+			QdkwJCtKUVE/4e7N+BWbz9UmyFN0qNQlZ57I61AE3wY=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ksg7QZIkW5Sf4sP/6anzIGpT2ts6g1D/r5WrWl2sTnw=
+			0FqTTE39WOTMeP+1tWezKoZInFelHEi5RzCWOvd/1U4=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
@@ -68,7 +75,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pE3X7cAkbfis/Rro9074HFRJA5QOl3Lfn+++1VbgZq8=
+			DmiG2Lj1qJwlt4m6kUetFxCFwTkNQPTN8eVBIQlTv84=
 			</data>
 		</dict>
 		<key>Resources/cardflip.wav</key>
@@ -90,13 +97,6 @@
 			<key>hash2</key>
 			<data>
 			zJCbp9TbHbFP1cZN2APDCFHeIQ4lrmoFyT/XeBkEjsI=
-			</data>
-		</dict>
-		<key>Resources/icon.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			tRxJsbEXT+K1sCqR6d7Uc6YbsWBHjoXe8LeRi4mosBY=
 			</data>
 		</dict>
 		<key>Resources/shuffle.wav</key>

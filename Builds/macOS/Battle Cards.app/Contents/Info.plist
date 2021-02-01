@@ -8,10 +8,10 @@
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>Battle Cards</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>icon.png</string>
-	</array>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.d.exclaimation.Battle-Cards</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -31,7 +31,7 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>12C33</string>
+	<string>12D4e</string>
 	<key>DTPlatformName</key>
 	<string>macosx</string>
 	<key>DTPlatformVersion</key>
@@ -41,9 +41,9 @@
 	<key>DTSDKName</key>
 	<string>macosx11.1</string>
 	<key>DTXcode</key>
-	<string>1230</string>
+	<string>1240</string>
 	<key>DTXcodeBuild</key>
-	<string>12C33</string>
+	<string>12D4e</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.card-games</string>
 	<key>LSMinimumSystemVersion</key>

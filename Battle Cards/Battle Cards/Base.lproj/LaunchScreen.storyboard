@@ -16,16 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dexclaimationbw" translatesAutoresizingMaskIntoConstraints="NO" id="Vgy-Ov-xSb">
-                                <rect key="frame" x="121.5" y="362.5" width="171" height="171"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple-splash-828-1792" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="94k-Qr-aOJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Vgy-Ov-xSb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="e3E-nk-FP7"/>
-                            <constraint firstItem="Vgy-Ov-xSb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fCW-DX-UMt"/>
+                            <constraint firstItem="94k-Qr-aOJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CGm-Vg-SOp"/>
+                            <constraint firstItem="94k-Qr-aOJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aDA-5X-1p6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="94k-Qr-aOJ" secondAttribute="bottom" id="h0L-iN-zxg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="94k-Qr-aOJ" secondAttribute="trailing" id="jIU-eK-CQV"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -35,7 +36,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dexclaimationbw" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="apple-splash-828-1792" width="828" height="1792"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
