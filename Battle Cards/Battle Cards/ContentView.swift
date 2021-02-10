@@ -187,7 +187,7 @@ struct ContentView: View {
     private func chooseCard(card: BattleSystem<Color, String>.Card) {
 
         // Check if selected card is real
-        guard emojiCardGame.playerHand.firstIndexOf(element: card) != nil else {
+        guard emojiCardGame.playerHand.firstIndex(of: card) != nil else {
             return
         }
         audio.playSound(.flip)

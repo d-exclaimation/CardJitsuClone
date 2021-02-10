@@ -57,7 +57,7 @@ struct BattleSystem<Color, Element> where Color: Equatable, Element: Equatable {
     }
     
     mutating func choose(card: Card, makeColor: (Int) -> Color, makeElement: (Int) -> Element) {
-        if let cardIndex: Int = playerHand.firstIndexOf(element: card) {
+        if let cardIndex: Int = playerHand.firstIndex(of: card) {
             // Retrieve card from hand
             let chosen = playerHand.remove(at: cardIndex)
 
